@@ -1,10 +1,12 @@
 package rmit_pf_ass2;
 
+import java.util.Random;
+
 public class GameItem {
 	
 	private String[][] board; 
-    static String X = "X";
-    static String O = "O";    
+ //   static String X = "X";
+ //   static String O = "O";    
     
     public GameItem()
     {
@@ -13,7 +15,12 @@ public class GameItem {
   }
     
 public void display() {
-    
+ 
+//need to get gold position and read out of the array
+//Gold positionGold = new Gold(); 
+//int [][] pg = positionGold.nextInt[][](); 
+//if (pg[1])
+	
 System.out.println();
 for (int i = 0; i < board.length; i++) {
  for (int j = 0; j < board[i].length; j++) {
