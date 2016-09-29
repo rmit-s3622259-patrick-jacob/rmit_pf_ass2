@@ -14,6 +14,11 @@ public class GameItem {
         board = new String[4][4]; 
   }
     
+    public void setBoard(){
+		  GameItem test = new GameItem();
+			test.display();
+		}
+    
 public void display() {
  
 //need to get gold position and read out of the array

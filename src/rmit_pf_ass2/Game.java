@@ -44,13 +44,4 @@ public class Game {
 		return (move);
 	}
 
-	public static void main(String args[]) {
-
-		Game output = new Game();
-		output.menu();
-
-		World test = new World();
-		test.setBoard();
-		// test.setAccessible(true);
-	}
 }
