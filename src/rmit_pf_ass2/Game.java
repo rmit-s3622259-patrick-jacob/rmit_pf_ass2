@@ -21,25 +21,30 @@ import java.util.Random;
 public class Game {
 
 	private String[][] board;
+	int ppr; // position player row
+	int ppc; // position player column
+
+	public Game() {
+		board = new String[4][4];
+		int ppr = 0; // initial player row
+		int ppc = 0; // initial player column
+
+	}
 
 	public void runGame() {
 
-		Game setboard = new Game();
-		setboard.setBoard();
-
-		// Game display = new Game();
-		// display.display();
-
-		Game userMenu = new Game();
-		userMenu.menu();
-		// initialize instance variables
+		Game myGame = new Game();
+		myGame.setBoard();
+		myGame.display();
+		myGame.menu();
+		myGame.movePlayer();
 
 	}
 
 	private int menu() {
 		System.out.println();
 
-		int move = 5;
+		int move;
 		Scanner input = new Scanner(System.in);
 
 		boolean validInput = false;
@@ -78,35 +83,27 @@ public class Game {
 		} while (!validInput);
 
 		System.out.println("Your entry: " + move);
-		return (move);
+		return move;
 	}
 
 	public void movePlayer() {
-		int ppr = 0; // position player row
-		int ppc = 0; // position player column
+		String h = "|";
 
 		int move = menu();
 
 		if (move == 1) { // move player left
 			if (ppr == 1 || ppr == 2 || ppr == 3) {
 				ppr = ppr - 1;
-			} else if (ppr == 0) { // ppr = 0
+			} else if (ppr == 0) {
 				ppr = ppr + 2;
 			}
-			board[ppr][ppc] = "*";
+			board[ppr][ppc] = "*" + h;
 
-			for (int r = 0; r < board.length; r++) {
-				System.out.println();
-				for (int c = 0; c < board.length; c++) {
-					System.out.print(board[r][c]);
-				}
-			}
 		}
+
 	}
 
 	private String[][] setBoard() {
-
-		board = new String[4][4];
 
 		System.out.println();
 		String v = "_";
@@ -152,24 +149,22 @@ public class Game {
 				}
 			}
 		}
-		// This part is for printing the board but should be in the display
-		// array but that throughs MullProinterExeption
+
+		return board;
+	}
+
+	private void display() {
+
+		// printing of board after all positions are set...
+		Game setboard = new Game();
+		String[][] board = setboard.setBoard();
+
 		for (int r = 0; r < board.length; r++) {
 			System.out.println();
 			for (int c = 0; c < board.length; c++) {
 				System.out.print(board[r][c]);
 			}
-
 		}
-		return board;
 	}
-
-	/*
-	 * private void display(){
-	 * 
-	 * //printing of board after all postions are set... for (int r = 0; r <
-	 * board.length; r++) { System.out.println(); for (int c = 0; c <
-	 * board.length; c++) { System.out.print(board[r][c]); } } }
-	 */
 
 }
