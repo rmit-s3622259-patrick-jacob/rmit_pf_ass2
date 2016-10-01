@@ -21,8 +21,7 @@ public abstract class GameItem {
 	public int[][] display(int times) {
 	
 		int[][] position = new int[times][2];
-		int i;
-		int j;
+		int i, j; 
 		
 		for(i=0; i < position.length; i++){
 			 for(j=0; j<position[i].length; j++){
