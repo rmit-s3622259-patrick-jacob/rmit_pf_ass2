@@ -10,17 +10,9 @@ import java.util.*;
  * You need to show Gold when the game is being played
  * After randomly generate W, P, G in the beginning of the game, these objects are settled in position.
  */
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'master' of https://github.com/rmit-s3622259-patrick-jacob/rmit_pf_ass2.git
-
-<<<<<<< HEAD
 
 public class Gold extends GameItem {
-=======
-public class Gold {
->>>>>>> branch 'master' of https://github.com/rmit-s3622259-patrick-jacob/rmit_pf_ass2.git
 /*	
 	int randRow;
 	int randColumn;

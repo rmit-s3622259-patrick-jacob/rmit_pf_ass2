@@ -1,7 +1,5 @@
 package rmit_pf_ass2;
 
-
-//github.com/rmit-s3622259-patrick-jacob/rmit_pf_ass2.git
 /* From the assignment description:
  * You should write a Game class, which has a 2D array of size 4 x 4 of GameItem called 
  * board for implementing the Wumpus game described above.
@@ -23,50 +21,25 @@ import java.util.Random;
 public class Game {
 
 	private String[][] board;
-	private char player;
-	private int r;	// row integer
-	private int c;	// column integer
 
-	
-	private String[][] board; 
-
-	public void runGame () {
-        
-      Game setboard = new Game();
-      setboard.setBoard();   
-      
-     // Game display = new Game();
-     // display.display();   
-      	  
-	  Game userMenu = new Game();
-	  userMenu.menu();
-	   // initialize instance variables  
-  
-	}
->>>>>>> branch 'master' of https://github.com/rmit-s3622259-patrick-jacob/rmit_pf_ass2.git
-
-<<<<<<< HEAD
 	public void runGame() {
+
+		Game setboard = new Game();
+		setboard.setBoard();
+
+		// Game display = new Game();
+		// display.display();
+
 		Game userMenu = new Game();
 		userMenu.menu();
-
 		// initialize instance variables
-		board = new String[4][4];
-
-		Game display = new Game();
-		display.display();
 
 	}
 
-	private void menu() {
-
-		int move;
-=======
 	private int menu() {
-	  System.out.println();
-	  
+		System.out.println();
+
 		int move = 5;
->>>>>>> branch 'master' of https://github.com/rmit-s3622259-patrick-jacob/rmit_pf_ass2.git
 		Scanner input = new Scanner(System.in);
 
 		boolean validInput = false;
@@ -87,7 +60,8 @@ public class Game {
 												 * entry is between 1 - 5
 												 */
 					validInput = true;
-				} else { // inform the user of wrong entry and to let user repeat entry
+				} else { // inform the user of wrong entry and to let user
+							// repeat entry
 					System.out.println("Wrong entry: please enter a number between 1 or 5");
 					move = input.nextInt();
 					if (move < 1 && move > 5) {
@@ -95,7 +69,7 @@ public class Game {
 					}
 				}
 			} catch (Exception e) { /*
-									 * 'catch' user when entry is not integer
+									 * 'catch' user when entry is not intenger
 									 * and to let user repeat entry
 									 */
 				validInput = false;
@@ -104,17 +78,14 @@ public class Game {
 		} while (!validInput);
 
 		System.out.println("Your entry: " + move);
-<<<<<<< HEAD
-		// return (move);
-
-		if (move == 1) {
-
-		}
-
+		return (move);
 	}
 
-	public void setBoard() {
+	private String[][] setBoard() {
 
+		board = new String[4][4];
+
+		System.out.println();
 		String v = "_";
 		String h = "|";
 
@@ -138,6 +109,7 @@ public class Game {
 		// System.out.print(pgv + pgh);
 		board[pgv][pgh] = "g" + h;
 		board[pwv][pwh] = "W" + h;
+
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board.length; j++) {
 				if (board[i][j] == null) {
@@ -157,89 +129,24 @@ public class Game {
 				}
 			}
 		}
-	}
-
-	public void display() {
-
-		// printing of board after all positions are set...
+		// This part is for printing the board but should be in the display
+		// array but that throughs MullProinterExeption
 		for (int r = 0; r < board.length; r++) {
 			System.out.println();
 			for (int c = 0; c < board.length; c++) {
 				System.out.print(board[r][c]);
 			}
+
 		}
-=======
-		return (move);	
->>>>>>> branch 'master' of https://github.com/rmit-s3622259-patrick-jacob/rmit_pf_ass2.git
+		return board;
 	}
-	
-	private String[][] setBoard(){
-		
-		board = new String[4][4];
-		
-		System.out.println();
-		String v = "_";
-		String h = "|";
 
-		int pgh = 0; //position gold horizontal
-		int pgv = 0; //position gold vertical
+	/*
+	 * private void display(){
+	 * 
+	 * //printing of board after all postions are set... for (int r = 0; r <
+	 * board.length; r++) { System.out.println(); for (int c = 0; c <
+	 * board.length; c++) { System.out.print(board[r][c]); } } }
+	 */
 
-		//Random Generator to get a random number between 0 and 3 using the Random Method
-		Random WumpusGenerator = new Random(); 
-		pgh = WumpusGenerator.nextInt(3); 
-		pgv = WumpusGenerator.nextInt(3); 
-
-		int pwh = 0; //position wumpus horizontal
-		int pwv = 0; //position wumpus vertical
-		//Random Generator to get a random number between 0 and 3 using the Random Method
-		Random randomGenerator = new Random(); 
-		pwh = randomGenerator.nextInt(3); 
-		pwv = randomGenerator.nextInt(3); 
-
-		//System.out.print(pgv + pgh); 
-			 board[pgv][pgh] = "g"+ h; 
-			 board[pwv][pwh] = "W"+ h; 
-			 
-		for (int i = 0; i < board.length; i++) {
-			   for (int j = 0; j < board.length; j++) {
-			     if (board[i][j] == null) {
-			    	 board[i][j] = v+h;
-			     } else
-			     {
-			    	// board[i][j] = v;
-			    //	 String v = "_";
-			    	continue; 
-			    	//System.out.print(board[i][j]);
-			     }
-			     if (j < 0) {
-			    	 board[i][j] = h;
-			        // System.out.print(h);
-			     } else {
-			        continue;
-			        //System.out.println();
-			     } 
-			  }
-		}
-	// This part is for printing the board but should be in the display array but that throughs MullProinterExeption	
-	for (int r = 0; r < board.length; r++) {
-			System.out.println();
-	 for (int c = 0; c < board.length; c++) {
-	      System.out.print(board[r][c]);  
-	 }
-	
-}
-	return board;
-	} 
-	
-/* private void display(){	
-	
-	//printing of board after all postions are set...
-	for (int r = 0; r < board.length; r++) {
-				System.out.println();
-		 for (int c = 0; c < board.length; c++) {
-		      System.out.print(board[r][c]);  
-		 }
-} 
-} */
-	
 }

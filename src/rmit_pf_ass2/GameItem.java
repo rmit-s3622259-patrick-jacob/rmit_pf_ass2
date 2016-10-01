@@ -14,41 +14,7 @@ package rmit_pf_ass2;
 
 import java.util.Random;
 
-<<<<<<< HEAD
 public abstract class GameItem {
-
-	private String[][] board;
-	// static String X = "X";
-	// static String O = "O";
-
-	public GameItem() {
-		// initialize instance variables
-		board = new String[4][4];
-	}
-
-	public void display() {
-
-		// need to get gold position and read out of the array
-		// Gold positionGold = new Gold();
-		// int [][] pg = positionGold.nextInt[][]();
-		// if (pg[1])
-
-		System.out.println();
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board[i].length; j++) {
-				if (board[i][j] == null) {
-					System.out.print("_");
-				} else {
-					System.out.print(board[i][j]);
-				}
-				if (j < 3) {
-					System.out.print("|");
-				} else {
-					System.out.println();
-				}
-			}
-=======
-public class GameItem {
 	
 	/*private String[][] board; 
  //   static String X = "X";
@@ -63,12 +29,7 @@ public class GameItem {
     public void setBoard(){
 		  GameItem test = new GameItem();
 			test.display();
->>>>>>> branch 'master' of https://github.com/rmit-s3622259-patrick-jacob/rmit_pf_ass2.git
 		}
-<<<<<<< HEAD
-
-	}
-=======
     
 public void display() {
  
@@ -95,5 +56,4 @@ for (int i = 0; i < board.length; i++) {
 
 
 }*/
->>>>>>> branch 'master' of https://github.com/rmit-s3622259-patrick-jacob/rmit_pf_ass2.git
 }
