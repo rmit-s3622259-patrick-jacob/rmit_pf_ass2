@@ -14,8 +14,7 @@ package rmit_pf_ass2;
 
 import java.util.Random;
 
-public abstract class GameItem {
-<<<<<<< HEAD
+public class GameItem {
 	
 	/*private String[][] board; 
  //   static String X = "X";
@@ -54,10 +53,7 @@ for (int i = 0; i < board.length; i++) {
      } 
   }
 }
-=======
->>>>>>> branch 'master' of https://github.com/rmit-s3622259-patrick-jacob/rmit_pf_ass2.git
 
-	public void display() {
 
-	}
+}*/
 }
