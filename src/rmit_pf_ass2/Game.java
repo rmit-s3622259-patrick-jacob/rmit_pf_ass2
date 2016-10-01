@@ -98,7 +98,7 @@ public class Game {
 		pgv = WumpusGenerator.nextInt(3);
 
 		int pwh = 0; // position wumpus horizontal
-		int pwv = 0; // position wumpus vertical
+		int pwv = 0; // position wumpus vertical 
 		// Random Generator to get a random number between 0 and 3 using the
 		// Random Method
 		Random randomGenerator = new Random();
