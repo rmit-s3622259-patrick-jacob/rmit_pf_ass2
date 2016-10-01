@@ -12,7 +12,7 @@ import java.util.*;
  */
 
 
-public class Gold {
+public class Gold extends GameItem{
 /*	
 	int randRow;
 	int randColumn;

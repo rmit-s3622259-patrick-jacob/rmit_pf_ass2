@@ -1,4 +1,5 @@
 package rmit_pf_ass2;
+
 /* From the assignment description:
  * You should write a Game class, which has a 2D array of size 4 x 4 of GameItem called 
  * board for implementing the Wumpus game described above.
@@ -18,26 +19,26 @@ import java.util.*;
 import java.util.Random;
 
 public class Game {
-	
-	private String[][] board; 
 
-	public void runGame () {
-        
-      Game setboard = new Game();
-      setboard.setBoard();   
-      
-     // Game display = new Game();
-     // display.display();   
-      	  
-	  Game userMenu = new Game();
-	  userMenu.menu();
-	   // initialize instance variables  
-  
+	private String[][] board;
+
+	public void runGame() {
+
+		Game setboard = new Game();
+		setboard.setBoard();
+
+		Game boardDisplay = new Game();
+		boardDisplay.display();
+
+		Game userMenu = new Game();
+		userMenu.menu();
+		// initialize instance variables
+
 	}
 
 	private int menu() {
-	  System.out.println();
-	  
+
+		System.out.println();
 		int move = 5;
 		Scanner input = new Scanner(System.in);
 
@@ -54,94 +55,103 @@ public class Game {
 				System.out.println("4. Move player down");
 				System.out.println("5. Quit");
 				move = input.nextInt();
-				if (move >= 1 && move <= 5) { /* here is to validate that User
-												entry is between 1 - 5*/
+				if (move >= 1 && move <= 5) { /*
+												 * here is to validate that User
+												 * entry is between 1 - 5
+												 */
 					validInput = true;
-				} else { // inform the user of wrong entry and to let user repeat entry
+				} else { // inform the user of wrong entry and to let user
+							// repeat entry
 					System.out.println("Wrong entry: please enter a number between 1 or 5");
 					move = input.nextInt();
 					if (move < 1 && move > 5) {
 						validInput = false;
 					}
 				}
-			} catch (Exception e) { /* 'catch' user when entry is not intenger
-									 and to let user repeat entry*/
+			} catch (Exception e) { /*
+									 * 'catch' user when entry is not intenger
+									 * and to let user repeat entry
+									 */
 				validInput = false;
 				move = input.nextInt();
 			}
 		} while (!validInput);
 
 		System.out.println("Your entry: " + move);
-		return (move);	
+		return (move);
 	}
-	
-	private String[][] setBoard(){
-		
+
+	private String[][] setBoard() {
+
 		board = new String[4][4];
-		
+
 		System.out.println();
 		String v = "_";
 		String h = "|";
 
-		int pgh = 0; //position gold horizontal
-		int pgv = 0; //position gold vertical
+		int pgh = 0; // position gold horizontal
+		int pgv = 0; // position gold vertical
 
-		//Random Generator to get a random number between 0 and 3 using the Random Method
-		Random WumpusGenerator = new Random(); 
-		pgh = WumpusGenerator.nextInt(3); 
-		pgv = WumpusGenerator.nextInt(3); 
+		// Random Generator to get a random number between 0 and 3 using the
+		// Random Method
+		Random WumpusGenerator = new Random();
+		pgh = WumpusGenerator.nextInt(3);
+		pgv = WumpusGenerator.nextInt(3);
 
-		int pwh = 0; //position wumpus horizontal
-		int pwv = 0; //position wumpus vertical
-		//Random Generator to get a random number between 0 and 3 using the Random Method
-		Random randomGenerator = new Random(); 
-		pwh = randomGenerator.nextInt(3); 
-		pwv = randomGenerator.nextInt(3); 
+		int pwh = 0; // position wumpus horizontal
+		int pwv = 0; // position wumpus vertical
+		// Random Generator to get a random number between 0 and 3 using the
+		// Random Method
+		Random randomGenerator = new Random();
+		pwh = randomGenerator.nextInt(3);
+		pwv = randomGenerator.nextInt(3);
 
-		//System.out.print(pgv + pgh); 
-			 board[pgv][pgh] = "g"+ h; 
-			 board[pwv][pwh] = "W"+ h; 
-			 
+		// System.out.print(pgv + pgh);
+		board[pgv][pgh] = "g" + h;
+		board[pwv][pwh] = "W" + h;
+
 		for (int i = 0; i < board.length; i++) {
-			   for (int j = 0; j < board.length; j++) {
-			     if (board[i][j] == null) {
-			    	 board[i][j] = v+h;
-			     } else
-			     {
-			    	// board[i][j] = v;
-			    //	 String v = "_";
-			    	continue; 
-			    	//System.out.print(board[i][j]);
-			     }
-			     if (j < 0) {
-			    	 board[i][j] = h;
-			        // System.out.print(h);
-			     } else {
-			        continue;
-			        //System.out.println();
-			     } 
-			  }
+			for (int j = 0; j < board.length; j++) {
+				if (board[i][j] == null) {
+					board[i][j] = v + h;
+				} else {
+					// board[i][j] = v;
+					// String v = "_";
+					continue;
+					// System.out.print(board[i][j]);
+				}
+				if (j < 0) {
+					board[i][j] = h;
+					// System.out.print(h);
+				} else {
+					continue;
+					// System.out.println();
+				}
+			}
 		}
-	// This part is for printing the board but should be in the display array but that throughs MullProinterExeption	
-	for (int r = 0; r < board.length; r++) {
+
+		// This part is for printing the board but should be in the display
+		// array but that throughs MullProinterExeption
+		/*
+		 * for (int r = 0; r < board.length; r++) { System.out.println(); for
+		 * (int c = 0; c < board.length; c++) { System.out.print(board[r][c]); }
+		 * 
+		 * }
+		 */
+		return board;
+	}
+
+	private void display() {
+
+		// printing of board after all postions are set...
+		Game setboard = new Game();
+		String[][] board = setboard.setBoard();
+
+		for (int r = 0; r < board.length; r++) {
 			System.out.println();
-	 for (int c = 0; c < board.length; c++) {
-	      System.out.print(board[r][c]);  
-	 }
-	
-}
-	return board;
-	} 
-	
-/* private void display(){	
-	
-	//printing of board after all postions are set...
-	for (int r = 0; r < board.length; r++) {
-				System.out.println();
-		 for (int c = 0; c < board.length; c++) {
-		      System.out.print(board[r][c]);  
-		 }
-} 
-} */
-	
+			for (int c = 0; c < board.length; c++) {
+				System.out.print(board[r][c]);
+			}
+		}
+	}
 }
