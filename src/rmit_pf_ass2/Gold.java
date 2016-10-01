@@ -22,24 +22,46 @@ public class Gold extends GameItem{
 	} while (grid[randRow][randColumn] != null);
 	grid[randRow][randColumn] = "X";
 */
+	//public static void main (String args[]){
 	public int[][] getGoldposition() {
 	int ag = 0; //position gold as array horizontal
 		
 		Random amountGoldGenerator = new Random();
-		ag = amountGoldGenerator.nextInt(2); 
+	//	int Low = 1;
+	//	int High = 3;
+	//	ag = amountGoldGenerator.nextInt(High-Low) + Low;
+		ag = amountGoldGenerator.nextInt(3); 
 		
 	int[][] pg = new int[ag][2];
 	int i;
+	int j;
+	int row;
+	int col;
 	//Random Generator to get a random number between 0 and 3 using the Random Method
 	//do {
-		for (i=0; i < ag; i++ ){
-			for (int j=0; j<2; j++) {
-			Random GoldGenerator = new Random();
-			pg[i][j] = GoldGenerator.nextInt(3); 
+	for(i=0;i<ag;i++){
+		 for(j=0;j<2;j++){
+			  Random GoldGenerator = new Random();
+		      pg[i][j] = GoldGenerator.nextInt(3);
+		  //    System.out.print(pg[i][j]);
+		      
+	//	for (i=0; i < ag; i++ ){
+		//	for (int j=0; j<2; j++) {
+		//	Random GoldGenerator = new Random();
+		//	row = GoldGenerator.nextInt(3); 	
+		//	col = GoldGenerator.nextInt(3); 
+		//	pg[i][j] = [row][col];
 			}
 		}
-	//}
+		System.out.println(ag);
+		
+		for (int r = 0; r < pg.length; r++) {
+			System.out.println();
+			   for (int c = 0; c < pg.length; c++) {
+				   System.out.print(pg[r][c]);
+				   }
 	//while ();
-			return pg;
+		return pg;
 		}
+	}
 }

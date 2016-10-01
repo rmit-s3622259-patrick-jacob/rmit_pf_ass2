@@ -33,7 +33,6 @@ public class Game {
 		Game userMenu = new Game();
 		userMenu.menu();
 		// initialize instance variables
-
 	}
 
 	private int menu() {
@@ -130,14 +129,6 @@ public class Game {
 			}
 		}
 
-		// This part is for printing the board but should be in the display
-		// array but that throughs MullProinterExeption
-		/*
-		 * for (int r = 0; r < board.length; r++) { System.out.println(); for
-		 * (int c = 0; c < board.length; c++) { System.out.print(board[r][c]); }
-		 * 
-		 * }
-		 */
 		return board;
 	}
 

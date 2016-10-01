@@ -16,7 +16,20 @@ import java.util.Random;
 
 public abstract class GameItem {
 
-	public void display() {
-
+	// abstract method for getting the position of any of the elements
+	// shall be used in the elements classes
+	public int[][] display(int times) {
+	
+		int[][] position = new int[times][2];
+		int i;
+		int j;
+		
+		for(i=0; i < position.length; i++){
+			 for(j=0; j<position[i].length; j++){
+				  Random GoldGenerator = new Random();
+			      position[i][j] = GoldGenerator.nextInt(3);
+			 	}
+			 }
+		return position;
 	}
 }
