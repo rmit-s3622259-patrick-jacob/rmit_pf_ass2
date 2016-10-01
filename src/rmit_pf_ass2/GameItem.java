@@ -25,10 +25,12 @@ public abstract class GameItem {
 		
 		for(i=0; i < position.length; i++){
 			 for(j=0; j<position[i].length; j++){
-				  Random GoldGenerator = new Random();
-			      position[i][j] = GoldGenerator.nextInt(3);
+				  Random randomGenerator = new Random();
+			      position[i][j] = randomGenerator.nextInt(3);
 			 	}
 			 }
+		
 		return position;
 	}
+	
 }

@@ -12,35 +12,13 @@ import java.util.*;
  * After randomly generate W, P, G in the beginning of the game, these objects are settled in position.
  */
 
-
-<<<<<<< HEAD
-public class Gold extends GameItem{
-/*	
-	int randRow;
-	int randColumn;
-	do {
-	  randRow = random.nextInt(ROWS);
-	  randColumn = random.nextInt(COLUMNS);
-	} while (grid[randRow][randColumn] != null);
-	grid[randRow][randColumn] = "X";
-*/
-	//public static void main (String args[]){
-=======
 public class Gold extends GameItem {
 	
 	public int goldScore = 0;
-	
-	/*
-	 * int randRow; int randColumn; do { randRow = random.nextInt(ROWS);
-	 * randColumn = random.nextInt(COLUMNS); } while (grid[randRow][randColumn]
-	 * != null); grid[randRow][randColumn] = "X";
-	 */
->>>>>>> branch 'master' of https://github.com/rmit-s3622259-patrick-jacob/rmit_pf_ass2
-	public int[][] getGoldposition() {
+		public int[][] getGoldposition() {
 		int ag = 0; // position gold as array horizontal
 
 		Random amountGoldGenerator = new Random();
-<<<<<<< HEAD
 	//	int Low = 1;
 	//	int High = 3;
 	//	ag = amountGoldGenerator.nextInt(High-Low) + Low;
@@ -51,36 +29,15 @@ public class Gold extends GameItem {
 	int j;
 	int row;
 	int col;
-	//Random Generator to get a random number between 0 and 3 using the Random Method
-	//do {
-	for(i=0;i<ag;i++){
-		 for(j=0;j<2;j++){
-			  Random GoldGenerator = new Random();
-		      pg[i][j] = GoldGenerator.nextInt(3);
-		  //    System.out.print(pg[i][j]);
-		      
-	//	for (i=0; i < ag; i++ ){
-		//	for (int j=0; j<2; j++) {
-		//	Random GoldGenerator = new Random();
-		//	row = GoldGenerator.nextInt(3); 	
-		//	col = GoldGenerator.nextInt(3); 
-		//	pg[i][j] = [row][col];
-=======
-		ag = amountGoldGenerator.nextInt(2);
-
-		int[][] pg = new int[ag][2];
-		int i;
 		// Random Generator to get a random number between 0 and 3 using the
 		// Random Method
 		// do {
 		for (i = 0; i < ag; i++) {
-			for (int j = 0; j < 2; j++) {
+			for (j = 0; j < 2; j++) {
 				Random GoldGenerator = new Random();
 				pg[i][j] = GoldGenerator.nextInt(3);
->>>>>>> branch 'master' of https://github.com/rmit-s3622259-patrick-jacob/rmit_pf_ass2
 			}
 		}
-<<<<<<< HEAD
 		System.out.println(ag);
 		
 		for (int r = 0; r < pg.length; r++) {
@@ -89,13 +46,10 @@ public class Gold extends GameItem {
 				   System.out.print(pg[r][c]);
 				   }
 	//while ();
-		return pg;
-		}
-=======
-		// }
-		// while ();
-		return pg;
+		
 	}
+		return pg;
+ }
 
 	// this method when invoked will notify the player has landed on gold
 
@@ -107,6 +61,5 @@ public class Gold extends GameItem {
 	public void increaseScore(){
 		goldScore= goldScore++;
 		System.out.println("Player landed in gold. Score is" +goldScore);
->>>>>>> branch 'master' of https://github.com/rmit-s3622259-patrick-jacob/rmit_pf_ass2
 	}
 }
