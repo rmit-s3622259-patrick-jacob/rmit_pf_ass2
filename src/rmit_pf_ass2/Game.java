@@ -36,13 +36,10 @@ public class Game {
 
 	}
 
-	private void menu() {
+	private int menu() {
 		System.out.println();
 
 		int move = 5;
-		int ppr = 0;	// position player row
-		int ppc = 0;	// position player column
-		
 		Scanner input = new Scanner(System.in);
 
 		boolean validInput = false;
@@ -81,16 +78,29 @@ public class Game {
 		} while (!validInput);
 
 		System.out.println("Your entry: " + move);
-		
-		if (move == 1) {	// move player left
-			if (ppr == 1 || ppr == 2){
+		return (move);
+	}
+
+	public void movePlayer() {
+		int ppr = 0; // position player row
+		int ppc = 0; // position player column
+
+		int move = menu();
+
+		if (move == 1) { // move player left
+			if (ppr == 1 || ppr == 2 || ppr == 3) {
 				ppr = ppr - 1;
-			}
-			else { // ppr = 0
+			} else if (ppr == 0) { // ppr = 0
 				ppr = ppr + 2;
 			}
 			board[ppr][ppc] = "*";
-			
+
+			for (int r = 0; r < board.length; r++) {
+				System.out.println();
+				for (int c = 0; c < board.length; c++) {
+					System.out.print(board[r][c]);
+				}
+			}
 		}
 	}
 
