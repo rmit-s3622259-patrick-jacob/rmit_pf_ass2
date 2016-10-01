@@ -1,5 +1,5 @@
 package rmit_pf_ass2;
 
-public class ClearGround {
+public class ClearGround extends GameItem {
 
 }
