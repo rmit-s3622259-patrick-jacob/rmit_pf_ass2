@@ -27,8 +27,13 @@ public class Game {
 		Game setboard = new Game();
 		setboard.setBoard();
 
+<<<<<<< HEAD
 		// Game display = new Game();
 		// display.display();
+=======
+		Game boardDisplay = new Game();
+		boardDisplay.display();
+>>>>>>> branch 'master' of https://github.com/rmit-s3622259-patrick-jacob/rmit_pf_ass2.git
 
 		Game userMenu = new Game();
 		userMenu.menu();
@@ -37,8 +42,13 @@ public class Game {
 	}
 
 	private int menu() {
+<<<<<<< HEAD
 		System.out.println();
 
+=======
+
+		System.out.println();
+>>>>>>> branch 'master' of https://github.com/rmit-s3622259-patrick-jacob/rmit_pf_ass2.git
 		int move = 5;
 		Scanner input = new Scanner(System.in);
 
@@ -129,13 +139,35 @@ public class Game {
 				}
 			}
 		}
+<<<<<<< HEAD
 		// This part is for printing the board but should be in the display
 		// array but that throughs MullProinterExeption
+=======
+
+		// This part is for printing the board but should be in the display
+		// array but that throughs MullProinterExeption
+		/*
+		 * for (int r = 0; r < board.length; r++) { System.out.println(); for
+		 * (int c = 0; c < board.length; c++) { System.out.print(board[r][c]); }
+		 * 
+		 * }
+		 */
+		return board;
+	}
+
+	private void display() {
+
+		// printing of board after all postions are set...
+		Game setboard = new Game();
+		String[][] board = setboard.setBoard();
+
+>>>>>>> branch 'master' of https://github.com/rmit-s3622259-patrick-jacob/rmit_pf_ass2.git
 		for (int r = 0; r < board.length; r++) {
 			System.out.println();
 			for (int c = 0; c < board.length; c++) {
 				System.out.print(board[r][c]);
 			}
+<<<<<<< HEAD
 
 		}
 		return board;
@@ -149,4 +181,8 @@ public class Game {
 	 * board.length; c++) { System.out.print(board[r][c]); } } }
 	 */
 
+=======
+		}
+	}
+>>>>>>> branch 'master' of https://github.com/rmit-s3622259-patrick-jacob/rmit_pf_ass2.git
 }

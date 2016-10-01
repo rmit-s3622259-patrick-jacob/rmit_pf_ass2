@@ -1,4 +1,5 @@
 package rmit_pf_ass2;
+
 import java.util.*;
 /* From the assignment description
  * Gold is displayed as 'g',
@@ -13,6 +14,7 @@ import java.util.*;
 
 
 public class Gold extends GameItem {
+<<<<<<< HEAD
 /*	
 	int randRow;
 	int randColumn;
@@ -22,24 +24,47 @@ public class Gold extends GameItem {
 	} while (grid[randRow][randColumn] != null);
 	grid[randRow][randColumn] = "X";
 */
+=======
+	
+	public int goldScore = 0;
+	
+	/*
+	 * int randRow; int randColumn; do { randRow = random.nextInt(ROWS);
+	 * randColumn = random.nextInt(COLUMNS); } while (grid[randRow][randColumn]
+	 * != null); grid[randRow][randColumn] = "X";
+	 */
+>>>>>>> branch 'master' of https://github.com/rmit-s3622259-patrick-jacob/rmit_pf_ass2.git
 	public int[][] getGoldposition() {
-	int ag = 0; //position gold as array horizontal
-		
+		int ag = 0; // position gold as array horizontal
+
 		Random amountGoldGenerator = new Random();
-		ag = amountGoldGenerator.nextInt(2); 
-		
-	int[][] pg = new int[ag][2];
-	int i;
-	//Random Generator to get a random number between 0 and 3 using the Random Method
-	//do {
-		for (i=0; i < ag; i++ ){
-			for (int j=0; j<2; j++) {
-			Random GoldGenerator = new Random();
-			pg[i][j] = GoldGenerator.nextInt(3); 
+		ag = amountGoldGenerator.nextInt(2);
+
+		int[][] pg = new int[ag][2];
+		int i;
+		// Random Generator to get a random number between 0 and 3 using the
+		// Random Method
+		// do {
+		for (i = 0; i < ag; i++) {
+			for (int j = 0; j < 2; j++) {
+				Random GoldGenerator = new Random();
+				pg[i][j] = GoldGenerator.nextInt(3);
 			}
 		}
-	//}
-	//while ();
-			return pg;
-		}
+		// }
+		// while ();
+		return pg;
+	}
+
+	// this method when invoked will notify the player has landed on gold
+
+	public void sendOutcome() {
+		System.out.println("Player landed in gold");
+		increaseScore();
+	}
+	
+	public void increaseScore(){
+		goldScore= goldScore++;
+		System.out.println("Player landed in gold. Score is" +goldScore);
+	}
 }
