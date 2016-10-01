@@ -105,6 +105,9 @@ public class Game {
 		pwh = randomGenerator.nextInt(3);
 		pwv = randomGenerator.nextInt(3);
 
+		Wumpus posWumpus = new Wumpus();
+		posWumpus.display(1);
+		
 		// System.out.print(pgv + pgh);
 		board[pgv][pgh] = "g" + h;
 		board[pwv][pwh] = "W" + h;
