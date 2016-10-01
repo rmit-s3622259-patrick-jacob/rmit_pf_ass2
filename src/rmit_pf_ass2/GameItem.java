@@ -16,7 +16,7 @@ import java.util.Random;
 
 public class GameItem {
 	
-	private String[][] board; 
+	/*private String[][] board; 
  //   static String X = "X";
  //   static String O = "O";    
     
@@ -55,5 +55,5 @@ for (int i = 0; i < board.length; i++) {
 }
 
 
-}
+}*/
 }

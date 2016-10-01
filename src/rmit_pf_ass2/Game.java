@@ -18,22 +18,26 @@ import java.util.*;
 import java.util.Random;
 
 public class Game {
-	private String[][] board; 
 	
+	private String[][] board; 
+
 	public void runGame () {
-		Game userMenu = new Game();
-		userMenu.menu();
-		
-	   // initialize instance variables
-        board = new String[4][4]; 
         
-        Game display = new Game();
-		display.display();
-        
+      Game setboard = new Game();
+      setboard.setBoard();   
+      
+     // Game display = new Game();
+     // display.display();   
+      	  
+	  Game userMenu = new Game();
+	  userMenu.menu();
+	   // initialize instance variables  
+  
 	}
 
 	private int menu() {
-
+	  System.out.println();
+	  
 		int move = 5;
 		Scanner input = new Scanner(System.in);
 
@@ -71,8 +75,11 @@ public class Game {
 		return (move);	
 	}
 	
-	public void setBoard(){
-
+	private String[][] setBoard(){
+		
+		board = new String[4][4];
+		
+		System.out.println();
 		String v = "_";
 		String h = "|";
 
@@ -92,8 +99,9 @@ public class Game {
 		pwv = randomGenerator.nextInt(3); 
 
 		//System.out.print(pgv + pgh); 
-			 board[pgv][pgh] = "g"+h; 
-			 board[pwv][pwh] = "W"+h; 
+			 board[pgv][pgh] = "g"+ h; 
+			 board[pwv][pwh] = "W"+ h; 
+			 
 		for (int i = 0; i < board.length; i++) {
 			   for (int j = 0; j < board.length; j++) {
 			     if (board[i][j] == null) {
@@ -114,9 +122,18 @@ public class Game {
 			     } 
 			  }
 		}
-	}
+	// This part is for printing the board but should be in the display array but that throughs MullProinterExeption	
+	for (int r = 0; r < board.length; r++) {
+			System.out.println();
+	 for (int c = 0; c < board.length; c++) {
+	      System.out.print(board[r][c]);  
+	 }
 	
-public void display(){	
+}
+	return board;
+	} 
+	
+/* private void display(){	
 	
 	//printing of board after all postions are set...
 	for (int r = 0; r < board.length; r++) {
@@ -124,7 +141,7 @@ public void display(){
 		 for (int c = 0; c < board.length; c++) {
 		      System.out.print(board[r][c]);  
 		 }
-}
-}
+} 
+} */
 	
 }
