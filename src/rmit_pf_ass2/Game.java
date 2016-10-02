@@ -102,47 +102,67 @@ public class Game {
 		
 
 	//	get position of Wumpus position through Wumpus class
+		//do
+		{
 		ClearGround posCG = new ClearGround();
 		int [][] clearground = posCG.display(2);
 		cgh = clearground [0][0];
 		cgv = clearground [1][0];
 		
+	if (board[cgh][cgv] == null){
 		board[cgh][cgv] = "*" + h;
+	//	break;
+	//	} else {
+	//	} continue;
+		} while (board[cgh][cgv] == null);}
 		
 		//	get position of Wumpus position through Wumpus class
+//		do{
+		{
 		Wumpus posWumpus = new Wumpus();
 		int [][] wumpus = posWumpus.display(2);
 		pwh = wumpus [0][0];
 		pwv = wumpus [1][0];
 		
-		board[pwh][pwv] = "W" + h;
-	
+		if (board[pwh][pwv] == null) {
+			board[pwh][pwv] = "W" + h;
+//			break;
+//		} else {
+//			continue;
+		} while (board[pwh][pwv] == null); }
+		
+		
 		//amount of gold that shall be generated between 1-3
 		int ag = 0;
 		Random amountGoldGenerator = new Random();
 		ag = amountGoldGenerator.nextInt(4)+1; 
 		
 	//	Random times of loop as generated above and writing into the array
+		{
 		for (int i = 0; i < ag; i++){	
 		Gold posGold = new Gold();
 		int [][] Gold = posGold.display(2);	
 		
 		 	pgh = Gold [0][0];  //setting horizontal positons into int pgh
 		 	pgv = Gold [1][0]; 	//setting vertical positons into int pgv
-	
+		 	
+		if (board[pgh][pgv] == null) {
 		board[pgh][pgv] = "g" + h; //writing Gold into positions from int pgh, int pgv
+		} while (board[pgh][pgv] == null);
 		}
 		
 		//loop to get 3 Pit Positions 
+	
 		for (int i = 0; i < 3; i++){	
+		{
 		Pit posPit = new Pit();
 		int [][] Pit = posPit.display(3);	
-		
 		 	pph = Pit [0][0]; //setting horizontal positions into int pph
 		 	ppv = Pit [1][0]; //setting vertical positions into int ppv
-	
-		board[pph][ppv] = "p" + h; //writing Pit into positions from int pph, int ppv
-		}
+		if (board[pph][ppv] == null) {
+			board[pph][ppv] = "p" + h; //writing Pit into positions from int pph, int ppv
+		} while (board[pph][ppv] == null);
+		}}}
 		
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board.length; j++) {
@@ -163,9 +183,10 @@ public class Game {
 				}
 			}
 		}
-
+		
 		return board;
-	}
+	
+		}
 
 	private void display() {
 
