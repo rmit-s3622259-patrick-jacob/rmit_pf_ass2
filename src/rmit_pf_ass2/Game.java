@@ -23,16 +23,18 @@ public class Game {
 	private String[][] board;
 	int ppr; // position player row
 	int ppc; // position player column
+	boolean endGame;
 
 	public Game() {
 		board = new String[4][4];
 		int ppr = 0; // initial player row
 		int ppc = 0; // initial player column
+		boolean endGame = false;
 	}
 
 	public void runGame() {
 
-		boolean endGame = true;
+		boolean endGame = false;
 
 		Game myGame = new Game();
 		myGame.setBoard();
@@ -40,7 +42,7 @@ public class Game {
 		do {
 			myGame.display();
 			myGame.movePlayer();
-		} while (endGame == true);
+		} while (endGame == false);
 
 		// initialize instance variables
 	}
@@ -81,53 +83,70 @@ public class Game {
 
 		System.out.println("Your entry: " + move);
 		return move;
-
 	}
 
-	public void movePlayer() {
+	public boolean movePlayer() {
+		
 		String h = "|";
-		board[ppr][ppc] = "." + h; // remove * from previous player position,
-									// mark as clear ground
+		board[ppr][ppc] = "." + h; // remove * from previous player
+									// position, mark as clear ground
 
 		int move = menu();
 
 		if (move == 1) { // move player left
-			if (ppc == 1 || ppc == 2 || ppc == 3) { // player column = 1, 2 or 3
+			if (ppc == 1 || ppc == 2 || ppc == 3) { // player column = 1, 2
+													// or 3
 				ppc = ppc - 1;
-			} else if (ppc == 0) { // player column = 0, move player position to
+			} else if (ppc == 0) { // player column = 0, move player
+									// position to
 									// other side of board
 				ppc = ppc + 3;
 			}
 		}
 		if (move == 2) { // move player right
-			if (ppc == 0 || ppc == 1 || ppc == 2) { // player column = 0, 1, or 2
+			if (ppc == 0 || ppc == 1 || ppc == 2) { // player column = 0, 1,
+													// or 2
 				ppc = ppc + 1;
-			} else if (ppc == 3) { // player column = 3, move player position to
+			} else if (ppc == 3) { // player column = 3, move player
+									// position to
 									// other side of board
 				ppc = ppc - 3;
 			}
 		}
 		if (move == 3) { // move player up
-			if (ppr == 1 || ppr == 2 || ppr == 3) { // player row = 1, 2 or 3
+			if (ppr == 1 || ppr == 2 || ppr == 3) { // player row = 1, 2 or
+													// 3
 				ppr = ppr - 1;
-			} else if (ppr == 0) { // player row = 0, move player position to
+			} else if (ppr == 0) { // player row = 0, move player position
+									// to
 									// other side of board
 				ppr = ppr + 3;
 			}
 		}
 		if (move == 4) { // move player down
-			if (ppr == 0 || ppr == 1 || ppr == 2) { // player row = 0, 1 or 2
+			if (ppr == 0 || ppr == 1 || ppr == 2) { // player row = 0, 1 or
+													// 2
 				ppr = ppr + 1;
-			} else if (ppr == 3) { // player row = 3, move player position to
+			} else if (ppr == 3) { // player row = 3, move player position
+									// to
 									// other side of board
 				ppr = ppr - 3;
 			}
 		}
-		board[ppr][ppc] = "*" + h;	// * marks player position
-
+		if (move == 5) { // user quits
+			System.out.println("Game has been ended");
+			// endGame = true;
+		}
+		board[ppr][ppc] = "*" + h; // * marks player position
+		
+		return endGame;
 	}
 
+	
+
 	private String[][] setBoard() {
+
+		board = new String[4][4];
 
 		System.out.println();
 		String v = "_";
@@ -145,21 +164,42 @@ public class Game {
 		int pgh = 0; // position Gold horizontal
 		int pgv = 0; // position Gold vertical
 
-		// get position of ClearGround position through ClearGround class
-		ClearGround posCG = new ClearGround();
-		int[][] clearground = posCG.display(2);
-		cgh = clearground[0][0];
-		cgv = clearground[1][0];
+		// get position of Wumpus position through Wumpus class
+		// do
+		{
+			ClearGround posCG = new ClearGround();
+			int[][] clearground = posCG.display(2);
+			cgh = clearground[0][0];
+			cgv = clearground[1][0];
 
-		board[cgh][cgv] = "." + h;
+			if (board[cgh][cgv] == null) {
+				board[cgh][cgv] = "." + h;
+				// break;
+				// } else {
+				// } continue;
+			}
+			while (board[cgh][cgv] == null)
+				;
+
+		}
 
 		// get position of Wumpus position through Wumpus class
-		Wumpus posWumpus = new Wumpus();
-		int[][] wumpus = posWumpus.display(2);
-		pwh = wumpus[0][0];
-		pwv = wumpus[1][0];
+		// do{
+		{
+			Wumpus posWumpus = new Wumpus();
+			int[][] wumpus = posWumpus.display(2);
+			pwh = wumpus[0][0];
+			pwv = wumpus[1][0];
 
-		board[pwh][pwv] = "W" + h;
+			if (board[pwh][pwv] == null) {
+				board[pwh][pwv] = "W" + h;
+				// break;
+				// } else {
+				// continue;
+			}
+			while (board[pwh][pwv] == null)
+				;
+		}
 
 		// amount of gold that shall be generated between 1-3
 		int ag = 0;
@@ -167,27 +207,39 @@ public class Game {
 		ag = amountGoldGenerator.nextInt(4) + 1;
 
 		// Random times of loop as generated above and writing into the array
-		for (int i = 0; i < ag; i++) {
-			Gold posGold = new Gold();
-			int[][] Gold = posGold.display(2);
+		{
+			for (int i = 0; i < ag; i++) {
+				Gold posGold = new Gold();
+				int[][] Gold = posGold.display(2);
 
-			pgh = Gold[0][0]; // setting horizontal positons into int pgh
-			pgv = Gold[1][0]; // setting vertical positons into int pgv
+				pgh = Gold[0][0]; // setting horizontal positons into int pgh
+				pgv = Gold[1][0]; // setting vertical positons into int pgv
 
-			board[pgh][pgv] = "g" + h; // writing Gold into positions from int
-										// pgh, int pgv
-		}
+				if (board[pgh][pgv] == null) {
+					board[pgh][pgv] = "g" + h; // writing Gold into positions
+												// from int pgh, int pgv
+				}
+				while (board[pgh][pgv] == null)
+					;
+			}
 
-		// loop to get 3 Pit Positions
-		for (int i = 0; i < 3; i++) {
-			Pit posPit = new Pit();
-			int[][] Pit = posPit.display(3);
+			// loop to get 3 Pit Positions
 
-			pph = Pit[0][0]; // setting horizontal positions into int pph
-			ppv = Pit[1][0]; // setting vertical positions into int ppv
-
-			board[pph][ppv] = "p" + h; // writing Pit into positions from int
-										// pph, int ppv
+			for (int i = 0; i < 3; i++) {
+				{
+					Pit posPit = new Pit();
+					int[][] Pit = posPit.display(3);
+					pph = Pit[0][0]; // setting horizontal positions into int
+										// pph
+					ppv = Pit[1][0]; // setting vertical positions into int ppv
+					if (board[pph][ppv] == null) {
+						board[pph][ppv] = "p" + h; // writing Pit into positions
+													// from int pph, int ppv
+					}
+					while (board[pph][ppv] == null)
+						;
+				}
+			}
 		}
 
 		for (int i = 0; i < board.length; i++) {
@@ -211,6 +263,7 @@ public class Game {
 		}
 
 		return board;
+
 	}
 
 	private void display() {

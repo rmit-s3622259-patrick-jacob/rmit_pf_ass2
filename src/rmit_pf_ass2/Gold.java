@@ -15,8 +15,8 @@ import java.util.*;
 public class Gold extends GameItem {
 	
 	public int[][] goldPosition() {
-		/* using polymorphism and inhertance to 
-		 * define the positon of Wumpus in setBoard() */
+		/* using polymorphism and inheritance to 
+		 * define the position of Wumpus in setBoard() */
 
 		int[][] posGold = super.display(2);
 		return posGold;
