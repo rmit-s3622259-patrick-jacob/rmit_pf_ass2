@@ -16,7 +16,7 @@ public class Gold extends GameItem {
 	
 	public int[][] goldPosition() {
 		/* using polymorphism and inheritance to 
-		 * define the position of Wumpus in setBoard() */
+		 * define the position of Gold in setBoard() */
 
 		int[][] posGold = super.display(2);
 		return posGold;
@@ -33,6 +33,6 @@ public class Gold extends GameItem {
 	
 	public void increaseScore(){
 		goldScore= goldScore++;
-		System.out.println("Player landed in gold. Score is" +goldScore);
+		System.out.println("Player landed in gold. Score is" + goldScore);
 	}
 }
