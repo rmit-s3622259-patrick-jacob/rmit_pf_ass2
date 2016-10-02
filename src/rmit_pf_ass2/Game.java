@@ -135,7 +135,7 @@ public class Game {
 		}
 		if (move == 5) { // user quits
 			System.out.println("Game has been ended");
-			// endGame = true;
+			endGame = true;
 		}
 		board[ppr][ppc] = "*" + h; // * marks player position
 		
