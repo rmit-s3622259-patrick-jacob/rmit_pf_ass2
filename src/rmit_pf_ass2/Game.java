@@ -33,12 +33,24 @@ public class Game {
 
 	public void runGame() {
 
+<<<<<<< HEAD
 		Game myGame = new Game();
 		myGame.setBoard();
 		myGame.display();
 		myGame.menu();
 		myGame.movePlayer();
 
+=======
+		Game setboard = new Game();
+		setboard.setBoard();
+
+		Game boardDisplay = new Game();
+		boardDisplay.display();
+
+		Game userMenu = new Game();
+		userMenu.menu();
+		// initialize instance variables
+>>>>>>> branch 'master' of https://github.com/rmit-s3622259-patrick-jacob/rmit_pf_ass2.git
 	}
 
 	private int menu() {
@@ -119,7 +131,7 @@ public class Game {
 		pgv = WumpusGenerator.nextInt(3);
 
 		int pwh = 0; // position wumpus horizontal
-		int pwv = 0; // position wumpus vertical
+		int pwv = 0; // position wumpus vertical 
 		// Random Generator to get a random number between 0 and 3 using the
 		// Random Method
 		Random randomGenerator = new Random();

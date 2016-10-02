@@ -25,11 +25,18 @@ public abstract class GameItem {
 		
 		for(i=0; i < position.length; i++){
 			 for(j=0; j<position[i].length; j++){
+<<<<<<< HEAD
 				  Random randomGenerator = new Random();
 			      position[i][j] = randomGenerator.nextInt(3);
 			 	}
 			 }
 		
+=======
+				  Random GoldGenerator = new Random();
+			      position[i][j] = GoldGenerator.nextInt(3);
+			 	}
+			 }
+>>>>>>> branch 'master' of https://github.com/rmit-s3622259-patrick-jacob/rmit_pf_ass2.git
 		return position;
 	}
 	
