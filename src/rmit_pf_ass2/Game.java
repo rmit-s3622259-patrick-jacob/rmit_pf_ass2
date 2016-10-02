@@ -88,29 +88,32 @@ public class Game {
 		String v = "_";
 		String h = "|";
 
-		int pgh = 0; // position gold horizontal
-		int pgv = 0; // position gold vertical
+		int cgh = 0; // position ClearGround horizontal
+		int cgv = 0; // position ClearGround vertical
 
-		// Random Generator to get a random number between 0 and 3 using the
-		// Random Method
-		Random WumpusGenerator = new Random();
-		pgh = WumpusGenerator.nextInt(3);
-		pgv = WumpusGenerator.nextInt(3);
+		int pwh = 0; // position Wumpus horizontal
+		int pwv = 0; // position Wumpus vertical 
 
-		int pwh = 0; // position wumpus horizontal
-		int pwv = 0; // position wumpus vertical 
-		// Random Generator to get a random number between 0 and 3 using the
-		// Random Method
-		Random randomGenerator = new Random();
-		pwh = randomGenerator.nextInt(3);
-		pwv = randomGenerator.nextInt(3);
-
+		ClearGround posCG = new ClearGround();
+		int [][] clearground = posCG.display(2);
+		cgh = clearground [0][0];
+		cgv = clearground [1][0];
+		
 		Wumpus posWumpus = new Wumpus();
-		posWumpus.display(1);
+		int [][] wumpus = posWumpus.display(2);
+		pwh = wumpus [0][0];
+		pwv = wumpus [1][0];
+
+		
+	//	test for posWumpus
+	//	System.out.print(test [0][0]);
+	//  System.out.print(test [1][0]);
 		
 		// System.out.print(pgv + pgh);
-		board[pgv][pgh] = "g" + h;
-		board[pwv][pwh] = "W" + h;
+		
+		board[cgh][cgv] = "*" + h;
+		board[pwh][pwv] = "W" + h;
+		
 
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board.length; j++) {
