@@ -14,42 +14,15 @@ import java.util.*;
 
 public class Gold extends GameItem {
 	
-	public int goldScore = 0;
-		public int[][] getGoldposition() {
-		int ag = 0; // position gold as array horizontal
+	public int[][] goldPosition() {
+		/* using polymorphism and inhertance to 
+		 * define the positon of Wumpus in setBoard() */
 
-		Random amountGoldGenerator = new Random();
-	//	int Low = 1;
-	//	int High = 3;
-	//	ag = amountGoldGenerator.nextInt(High-Low) + Low;
-		ag = amountGoldGenerator.nextInt(3); 
-		
-	int[][] pg = new int[ag][2];
-	int i;
-	int j;
-	int row;
-	int col;
-		// Random Generator to get a random number between 0 and 3 using the
-		// Random Method
-		// do {
-		for (i = 0; i < ag; i++) {
-			for (j = 0; j < 2; j++) {
-				Random GoldGenerator = new Random();
-				pg[i][j] = GoldGenerator.nextInt(3);
-			}
-		}
-		System.out.println(ag);
-		
-		for (int r = 0; r < pg.length; r++) {
-			System.out.println();
-			   for (int c = 0; c < pg.length; c++) {
-				   System.out.print(pg[r][c]);
-				   }
-	//while ();
-		
+		int[][] posGold = super.display(2);
+		return posGold;
 	}
-		return pg;
- }
+	
+	public int goldScore = 0;
 
 	// this method when invoked will notify the player has landed on gold
 

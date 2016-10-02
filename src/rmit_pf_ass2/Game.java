@@ -92,29 +92,58 @@ public class Game {
 		int cgv = 0; // position ClearGround vertical
 
 		int pwh = 0; // position Wumpus horizontal
-		int pwv = 0; // position Wumpus vertical 
+		int pwv = 0; // position Wumpus vertical
+		
+		int pph = 0; // position Pits horizontal
+		int ppv = 0; // position Pits vertical 
+		
+		int pgh = 0; // position Gold horizontal
+		int pgv = 0; // position Gold vertical 				
+		
 
+	//	get position of Wumpus position through Wumpus class
 		ClearGround posCG = new ClearGround();
 		int [][] clearground = posCG.display(2);
 		cgh = clearground [0][0];
 		cgv = clearground [1][0];
 		
+		board[cgh][cgv] = "*" + h;
+		
+		//	get position of Wumpus position through Wumpus class
 		Wumpus posWumpus = new Wumpus();
 		int [][] wumpus = posWumpus.display(2);
 		pwh = wumpus [0][0];
 		pwv = wumpus [1][0];
-
 		
-	//	test for posWumpus
-	//	System.out.print(test [0][0]);
-	//  System.out.print(test [1][0]);
-		
-		// System.out.print(pgv + pgh);
-		
-		board[cgh][cgv] = "*" + h;
 		board[pwh][pwv] = "W" + h;
+	
+		//amount of gold that shall be generated between 1-3
+		int ag = 0;
+		Random amountGoldGenerator = new Random();
+		ag = amountGoldGenerator.nextInt(4)+1; 
 		
-
+	//	Random times of loop as generated above and writing into the array
+		for (int i = 0; i < ag; i++){	
+		Gold posGold = new Gold();
+		int [][] Gold = posGold.display(2);	
+		
+		 	pgh = Gold [0][0];  //setting horizontal positons into int pgh
+		 	pgv = Gold [1][0]; 	//setting vertical positons into int pgv
+	
+		board[pgh][pgv] = "g" + h; //writing Gold into positions from int pgh, int pgv
+		}
+		
+		//loop to get 3 Pit Positions 
+		for (int i = 0; i < 3; i++){	
+		Pit posPit = new Pit();
+		int [][] Pit = posPit.display(3);	
+		
+		 	pph = Pit [0][0]; //setting horizontal positions into int pph
+		 	ppv = Pit [1][0]; //setting vertical positions into int ppv
+	
+		board[pph][ppv] = "p" + h; //writing Pit into positions from int pph, int ppv
+		}
+		
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board.length; j++) {
 				if (board[i][j] == null) {

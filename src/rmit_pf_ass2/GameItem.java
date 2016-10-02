@@ -20,7 +20,7 @@ public abstract class GameItem {
 	// shall be used in the elements classes
 	public int[][] display(int times) {
 		
-
+		//setting the size of array on size specified from calling the method
 		int[][] position = new int[times][1];
 		int i, j;
 		
@@ -30,7 +30,7 @@ public abstract class GameItem {
 			      position[i][j] = randomGenerator.nextInt(4);
 			 	}
 			 }
-		
+		//returning the array
 		return position;
 	}
 	

@@ -5,7 +5,7 @@ public class ClearGround extends GameItem {
 
 		/* using polymorphism and inhertance to
 		   define the Position of first ClearGround in setBoard()*/
-		int[][] postionClearGround = super.display(2);
-		return postionClearGround;
+		int[][] posClearGround = super.display(2);
+		return posClearGround;
 	}
 }
