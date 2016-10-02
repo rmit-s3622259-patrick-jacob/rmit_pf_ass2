@@ -162,6 +162,8 @@ public class Game {
 
 		int pgh = 0; // position Gold horizontal
 		int pgv = 0; // position Gold vertical
+		
+		board[ppr][ppc] = "*" + h; // * marks initial player position
 
 		// get position of Wumpus position through Wumpus class
 		// do
