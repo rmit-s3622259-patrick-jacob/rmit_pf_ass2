@@ -13,15 +13,17 @@ import java.util.*;
  */
 
 public class Gold extends GameItem {
-	
+
 	public int[][] goldPosition() {
-		/* using polymorphism and inheritance to 
-		 * define the position of Gold in setBoard() */
+		/*
+		 * using polymorphism and inheritance to define the position of Gold in
+		 * setBoard()
+		 */
 
 		int[][] posGold = super.display(2);
 		return posGold;
 	}
-	
+
 	public int goldScore = 0;
 
 	// this method when invoked will notify the player has landed on gold
@@ -30,9 +32,9 @@ public class Gold extends GameItem {
 		System.out.println("Player landed in gold");
 		increaseScore();
 	}
-	
-	public void increaseScore(){
-		goldScore= goldScore++;
-		System.out.println("Player landed in gold. Score is" + goldScore);
+
+	public void increaseScore() {
+		goldScore = goldScore + 1;
+		System.out.println("Player landed in gold. Score is " + goldScore);
 	}
 }

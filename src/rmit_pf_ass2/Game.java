@@ -21,30 +21,37 @@ import java.util.Random;
 public class Game {
 
 	private String[][] board;
-	int ppr; // position player row
-	int ppc; // position player column
-	boolean endGame;
+	private int ppr; // position player row
+	private int ppc; // position player column
+	private boolean endGame;
+	private String futureMove;
 
 	public Game() {
 		board = new String[4][4];
 		int ppr = 0; // initial player row
 		int ppc = 0; // initial player column
 		boolean endGame = false;
+		futureMove = null;
+
 	}
 
-	public void runGame() {	// method to run game
+	public void runGame() { // method to run game
 
 		Game myGame = new Game();
-		myGame.setBoard();	// set board at start of game
+		myGame.setBoard(); // set board at start of game
 
-		do {	// continue playing game until game ends
-			myGame.display();	// display board
-			endGame = myGame.movePlayer();	// move player's position
-			if (endGame == false)	// if game hasn't been ended invoke senseNearby method
-				myGame.senseNearby();	// sense what game items are near player's position
+		do { // continue playing game until game ends
+			myGame.display(); // display board
+			endGame = myGame.movePlayer(); // move player's position
+			if (endGame == false) {
+				myGame.senseNearby(); // sense what game items are near player's
+				// position
+
+				// if game hasn't been ended invoke senseNearby method
+			}
+
 		} while (endGame == false);
 
-		
 	}
 
 	private int menu() {
@@ -83,9 +90,11 @@ public class Game {
 
 		System.out.println("Your entry: " + move);
 		return move;
-	}	// end menu method
+	} // end menu method
 
-	public boolean movePlayer() {
+	// Determine future position
+
+	private boolean movePlayer() {
 
 		String h = "|";
 		board[ppr][ppc] = "." + h; // remove * from previous player
@@ -137,14 +146,21 @@ public class Game {
 			System.out.println("Game over");
 			endGame = true;
 		}
+
+		// set future move
+		futureMove = board[ppr][ppc];
+
+		// run getMyGround
+		getMyGround();
+
 		board[ppr][ppc] = "*" + h; // * marks player position
 
 		return endGame;
-	}	// end movePlayer method
+	} // end movePlayer method
 
 	private String[][] setBoard() {
 
-		//board = new String[4][4];
+		// board = new String[4][4];
 
 		System.out.println();
 		String v = "_";
@@ -161,7 +177,7 @@ public class Game {
 
 		int pgh = 0; // position Gold horizontal
 		int pgv = 0; // position Gold vertical
-		
+
 		board[ppr][ppc] = "*" + h; // * marks initial player position
 
 		// get position of Wumpus position through Wumpus class
@@ -264,7 +280,7 @@ public class Game {
 
 		return board;
 
-	}	// end setBoard method
+	} // end setBoard method
 
 	private void display() { // printing of board after all positions are set
 
@@ -278,119 +294,229 @@ public class Game {
 			}
 		}
 
-	}	// end display method
+	} // end display method
+
+	private boolean getMyGround() {
+		boolean isGold = false;
+		boolean isPit = false;
+		boolean isWumpus = false;
+
+		if (futureMove.equals("g|")) {// check if there is gold nearby
+			isGold = true;
+
+			// Instansiate obect
+			Gold myGold = new Gold();
+			myGold.increaseScore();
+		}
+		if (futureMove.equals("p|")) { // check if there is a pit nearby
+			isPit = true;
+			endGame = true;
+			System.out.println("Player has landed in a pit\n GAME OVER!!!!");
+		}
+
+		if (futureMove.equals("W|")) {// check if there is a Wumpus nearby
+			isWumpus = true;
+			endGame = true;
+			System.out.println("Player has been eaten by the Wumpus\n GAME OVER!!!!");
+		}
+
+		return endGame;
+
+	}
 
 	// check what items are near the player's position
 	private void senseNearby() {
 		boolean goldNearby = false;
 		boolean pitNearby = false;
 		boolean wumpusNearby = false;
-		
+
 		if (ppr == 0) { // if player position row = 0
-			if (ppc == 0)	// if player position column = 0
+			if (ppc == 0) // if player position column = 0
 				for (int i = 0; i < 2; i++)
 					for (int j = 0; j < 2; j++) {
-						if (board[ppr + i][ppc + j].equals("g|"))  // check if there is gold nearby
+						if (board[ppr + i][ppc + j].equals("g|")) // check if
+																	// there is
+																	// gold
+																	// nearby
 							goldNearby = true;
-						if (board[ppr + i][ppc + j].equals("p|"))  // check if there is a pit nearby
+						if (board[ppr + i][ppc + j].equals("p|")) // check if
+																	// there is
+																	// a pit
+																	// nearby
 							pitNearby = true;
-						if (board[ppr + i][ppc + j].equals("W|"))  // check if there is a Wumpus nearby
+						if (board[ppr + i][ppc + j].equals("W|")) // check if
+																	// there is
+																	// a Wumpus
+																	// nearby
 							wumpusNearby = true;
-						}
-			if (ppc == 1 || ppc == 2)	// if player position column = 1 or 2
+					}
+			if (ppc == 1 || ppc == 2) // if player position column = 1 or 2
 				for (int i = 0; i < 2; i++)
 					for (int j = -1; j < 2; j++) {
-						if (board[ppr + i][ppc + j].equals("g|"))  // check if there is gold nearby
+						if (board[ppr + i][ppc + j].equals("g|")) // check if
+																	// there is
+																	// gold
+																	// nearby
 							goldNearby = true;
-						if (board[ppr + i][ppc + j].equals("p|"))  // check if there is a pit nearby
+						if (board[ppr + i][ppc + j].equals("p|")) // check if
+																	// there is
+																	// a pit
+																	// nearby
 							pitNearby = true;
-						if (board[ppr + i][ppc + j].equals("W|"))  // check if there is a Wumpus nearby
+						if (board[ppr + i][ppc + j].equals("W|")) // check if
+																	// there is
+																	// a Wumpus
+																	// nearby
 							wumpusNearby = true;
-						}
-			if (ppc == 3)	// if player position column = 3
+					}
+			if (ppc == 3) // if player position column = 3
 				for (int i = 0; i < 2; i++)
 					for (int j = -1; j < 1; j++) {
-						if (board[ppr + i][ppc + j].equals("g|"))  // check if there is gold nearby
+						if (board[ppr + i][ppc + j].equals("g|")) // check if
+																	// there is
+																	// gold
+																	// nearby
 							goldNearby = true;
-						if (board[ppr + i][ppc + j].equals("p|"))  // check if there is a pit nearby
+						if (board[ppr + i][ppc + j].equals("p|")) // check if
+																	// there is
+																	// a pit
+																	// nearby
 							pitNearby = true;
-						if (board[ppr + i][ppc + j].equals("W|"))  // check if there is a Wumpus nearby
+						if (board[ppr + i][ppc + j].equals("W|")) // check if
+																	// there is
+																	// a Wumpus
+																	// nearby
 							wumpusNearby = true;
 					}
 		}
-		
+
 		if (ppr == 1 || ppr == 2) { // if player position row = 1 or 2
-			if (ppc == 0)	// if player position column = 0
+			if (ppc == 0) // if player position column = 0
 				for (int i = -1; i < 2; i++)
 					for (int j = 0; j < 2; j++) {
-						if (board[ppr + i][ppc + j].equals("g|"))  // check if there is gold nearby
+						if (board[ppr + i][ppc + j].equals("g|")) // check if
+																	// there is
+																	// gold
+																	// nearby
 							goldNearby = true;
-						if (board[ppr + i][ppc + j].equals("p|"))  // check if there is a pit nearby
+						if (board[ppr + i][ppc + j].equals("p|")) // check if
+																	// there is
+																	// a pit
+																	// nearby
 							pitNearby = true;
-						if (board[ppr + i][ppc + j].equals("W|"))  // check if there is a Wumpus nearby
+						if (board[ppr + i][ppc + j].equals("W|")) // check if
+																	// there is
+																	// a Wumpus
+																	// nearby
 							wumpusNearby = true;
-						}
-			if (ppc == 1 || ppc == 2)	// if player position column = 1 or 2
+					}
+			if (ppc == 1 || ppc == 2) // if player position column = 1 or 2
 				for (int i = -1; i < 2; i++)
 					for (int j = -1; j < 2; j++) {
-						if (board[ppr + i][ppc + j].equals("g|"))  // check if there is gold nearby
+						if (board[ppr + i][ppc + j].equals("g|")) // check if
+																	// there is
+																	// gold
+																	// nearby
 							goldNearby = true;
-						if (board[ppr + i][ppc + j].equals("p|"))  // check if there is a pit nearby
+						if (board[ppr + i][ppc + j].equals("p|")) // check if
+																	// there is
+																	// a pit
+																	// nearby
 							pitNearby = true;
-						if (board[ppr + i][ppc + j].equals("W|"))  // check if there is a Wumpus nearby
+						if (board[ppr + i][ppc + j].equals("W|")) // check if
+																	// there is
+																	// a Wumpus
+																	// nearby
 							wumpusNearby = true;
-						}
-			if (ppc == 3)	// if player position column = 3
+					}
+			if (ppc == 3) // if player position column = 3
 				for (int i = -1; i < 2; i++)
 					for (int j = -1; j < 1; j++) {
-						if (board[ppr + i][ppc + j].equals("g|"))  // check if there is gold nearby
+						if (board[ppr + i][ppc + j].equals("g|")) // check if
+																	// there is
+																	// gold
+																	// nearby
 							goldNearby = true;
-						if (board[ppr + i][ppc + j].equals("p|"))  // check if there is a pit nearby
+						if (board[ppr + i][ppc + j].equals("p|")) // check if
+																	// there is
+																	// a pit
+																	// nearby
 							pitNearby = true;
-						if (board[ppr + i][ppc + j].equals("W|"))  // check if there is a Wumpus nearby
+						if (board[ppr + i][ppc + j].equals("W|")) // check if
+																	// there is
+																	// a Wumpus
+																	// nearby
 							wumpusNearby = true;
 					}
 		}
-		
+
 		if (ppr == 3) { // if player position row = 3
-			if (ppc == 0)	// if player position column = 0
+			if (ppc == 0) // if player position column = 0
 				for (int i = -1; i < 1; i++)
 					for (int j = 0; j < 2; j++) {
-						if (board[ppr + i][ppc + j].equals("g|"))  // check if there is gold nearby
+						if (board[ppr + i][ppc + j].equals("g|")) // check if
+																	// there is
+																	// gold
+																	// nearby
 							goldNearby = true;
-						if (board[ppr + i][ppc + j].equals("p|"))  // check if there is a pit nearby
+						if (board[ppr + i][ppc + j].equals("p|")) // check if
+																	// there is
+																	// a pit
+																	// nearby
 							pitNearby = true;
-						if (board[ppr + i][ppc + j].equals("W|"))  // check if there is a Wumpus nearby
+						if (board[ppr + i][ppc + j].equals("W|")) // check if
+																	// there is
+																	// a Wumpus
+																	// nearby
 							wumpusNearby = true;
-						}
-			if (ppc == 1 || ppc == 2)	// if player position column = 1 or 2
+					}
+			if (ppc == 1 || ppc == 2) // if player position column = 1 or 2
 				for (int i = -1; i < 1; i++)
 					for (int j = -1; j < 2; j++) {
-						if (board[ppr + i][ppc + j].equals("g|"))  // check if there is gold nearby
+						if (board[ppr + i][ppc + j].equals("g|")) // check if
+																	// there is
+																	// gold
+																	// nearby
 							goldNearby = true;
-						if (board[ppr + i][ppc + j].equals("p|"))  // check if there is a pit nearby
+						if (board[ppr + i][ppc + j].equals("p|")) // check if
+																	// there is
+																	// a pit
+																	// nearby
 							pitNearby = true;
-						if (board[ppr + i][ppc + j].equals("W|"))  // check if there is a Wumpus nearby
+						if (board[ppr + i][ppc + j].equals("W|")) // check if
+																	// there is
+																	// a Wumpus
+																	// nearby
 							wumpusNearby = true;
-						}
-			if (ppc == 3)	// if player position column = 3
+					}
+			if (ppc == 3) // if player position column = 3
 				for (int i = -1; i < 1; i++)
 					for (int j = -1; j < 1; j++) {
-						if (board[ppr + i][ppc + j].equals("g|"))  // check if there is gold nearby
+						if (board[ppr + i][ppc + j].equals("g|")) // check if
+																	// there is
+																	// gold
+																	// nearby
 							goldNearby = true;
-						if (board[ppr + i][ppc + j].equals("p|"))  // check if there is a pit nearby
+						if (board[ppr + i][ppc + j].equals("p|")) // check if
+																	// there is
+																	// a pit
+																	// nearby
 							pitNearby = true;
-						if (board[ppr + i][ppc + j].equals("W|"))  // check if there is a Wumpus nearby
+						if (board[ppr + i][ppc + j].equals("W|")) // check if
+																	// there is
+																	// a Wumpus
+																	// nearby
 							wumpusNearby = true;
 					}
 		}
-		
-		if (goldNearby == true)	// if there is gold near the player's position
+
+		if (goldNearby == true) // if there is gold near the player's position
 			System.out.println("There is a faint glitter nearby");
-		if (pitNearby == true)	// if there is a pit near the player's position
+		if (pitNearby == true) // if there is a pit near the player's position
 			System.out.println("There is a breeze nearby");
-		if (wumpusNearby == true) // if there is a Wumpus near the player's position
-			System.out.println("There is a vile smell nearby"); 
-		
-	}	// end senseNearby method
+		if (wumpusNearby == true) // if there is a Wumpus near the player's
+									// position
+			System.out.println("There is a vile smell nearby");
+
+	} // end senseNearby method
 }

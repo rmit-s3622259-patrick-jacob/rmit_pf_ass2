@@ -5,11 +5,10 @@ package rmit_pf_ass2;
  * myGame.runGame()*/
 
 public class World {
-	
-public static void main(String args[]) {
 
-	Game myGame = new Game ();
-	myGame.runGame();
-}
-}
+	public static void main(String args[]) {
 
+		Game myGame = new Game();
+		myGame.runGame();
+	}
+}
