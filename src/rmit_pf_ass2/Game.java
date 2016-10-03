@@ -32,16 +32,16 @@ public class Game {
 		boolean endGame = false;
 	}
 
-	public void runGame() {
+	public void runGame() {	// method to run game
 
 		Game myGame = new Game();
-		myGame.setBoard();
+		myGame.setBoard();	// set board at start of game
 
 		do {	// continue playing game until game ends
-			myGame.display();
-			endGame = myGame.movePlayer();
+			myGame.display();	// display board
+			endGame = myGame.movePlayer();	// move player's position
 			if (endGame == false)	// if game hasn't been ended invoke senseNearby method
-				myGame.senseNearby();
+				myGame.senseNearby();	// sense what game items are near player's position
 		} while (endGame == false);
 
 		
@@ -266,9 +266,7 @@ public class Game {
 
 	}	// end setBoard method
 
-	private void display() {
-
-		// printing of board after all positions are set...
+	private void display() { // printing of board after all positions are set
 
 		// Game setboard = new Game();
 		// String[][] board = setboard.setBoard();
