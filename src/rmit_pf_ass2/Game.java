@@ -34,18 +34,17 @@ public class Game {
 
 	public void runGame() {
 
-		boolean endGame = false;
-
 		Game myGame = new Game();
 		myGame.setBoard();
 
-		do {
+		do {	// continue playing game until game ends
 			myGame.display();
-			myGame.movePlayer();
-			myGame.senseNearby();
+			endGame = myGame.movePlayer();
+			if (endGame == false)	// if game hasn't been ended invoke senseNearby method
+				myGame.senseNearby();
 		} while (endGame == false);
 
-		// initialize instance variables
+		
 	}
 
 	private int menu() {
@@ -84,7 +83,7 @@ public class Game {
 
 		System.out.println("Your entry: " + move);
 		return move;
-	}
+	}	// end menu method
 
 	public boolean movePlayer() {
 
@@ -135,17 +134,17 @@ public class Game {
 			}
 		}
 		if (move == 5) { // user quits
-			System.out.println("Game has been ended");
+			System.out.println("Game over");
 			endGame = true;
 		}
 		board[ppr][ppc] = "*" + h; // * marks player position
 
 		return endGame;
-	}
+	}	// end movePlayer method
 
 	private String[][] setBoard() {
 
-		board = new String[4][4];
+		//board = new String[4][4];
 
 		System.out.println();
 		String v = "_";
@@ -265,7 +264,7 @@ public class Game {
 
 		return board;
 
-	}
+	}	// end setBoard method
 
 	private void display() {
 
@@ -281,7 +280,7 @@ public class Game {
 			}
 		}
 
-	}
+	}	// end display method
 
 	// check what items are near the player's position
 	private void senseNearby() {
@@ -395,5 +394,5 @@ public class Game {
 		if (wumpusNearby == true) // if there is a Wumpus near the player's position
 			System.out.println("There is a vile smell nearby"); 
 		
-	}
+	}	// end senseNearby method
 }
