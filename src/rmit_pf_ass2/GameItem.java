@@ -19,19 +19,19 @@ public abstract class GameItem {
 	// abstract method for getting the position of any of the elements
 	// shall be used in the elements classes
 	public int[][] display(int times) {
-		
-		//setting the size of array on size specified from calling the method
+
+		// setting the size of array on size specified from calling the method
 		int[][] position = new int[times][1];
 		int i, j;
-		
-		for(i=0; i < position.length; i++){
-			 for(j=0; j<position[i].length; j++){
-				  Random randomGenerator = new Random();
-			      position[i][j] = randomGenerator.nextInt(4);
-			 	}
-			 }
-		//returning the array
+
+		for (i = 0; i < position.length; i++) {
+			for (j = 0; j < position[i].length; j++) {
+				Random randomGenerator = new Random();
+				position[i][j] = randomGenerator.nextInt(4);
+			}
+		}
+		// returning the array
 		return position;
 	}
-	
+
 }

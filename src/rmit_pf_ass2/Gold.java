@@ -14,25 +14,34 @@ import java.util.*;
 
 public class Gold extends GameItem {
 	
+	public int goldScore;
+	
+	public Gold() {
+		int goldScore = 0;	// initial goldscore is 0
+	}
+
 	public int[][] goldPosition() {
-		/* using polymorphism and inheritance to 
-		 * define the position of Gold in setBoard() */
+		/*
+		 * using polymorphism and inheritance to define the position of Gold in
+		 * setBoard()
+		 */
 
 		int[][] posGold = super.display(2);
 		return posGold;
 	}
-	
-	public int goldScore = 0;
 
-	// this method when invoked will notify the player has landed on gold
-
+	// this method will notify when the player has landed on gold
 	public void sendOutcome() {
 		System.out.println("Player landed in gold");
 		increaseScore();
 	}
+
+	// increase the gold score2
 	
-	public void increaseScore(){
-		goldScore= goldScore++;
-		System.out.println("Player landed in gold. Score is" + goldScore);
+	public int increaseScore() {
+		goldScore = goldScore + 1;
+		System.out.println("Player landed in gold. Score is " + goldScore);
+		
+		return goldScore;
 	}
 }
