@@ -2,7 +2,7 @@ package rmit_pf_ass2;
 
 /*From the assignment description:
  * The World class only instantiates an object myGame of class Game, and calls
- * myGame.runGame()*/
+ * myGame.runGame()*/ 
 
 public class World {
 

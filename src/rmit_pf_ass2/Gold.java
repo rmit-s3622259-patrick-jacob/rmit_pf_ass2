@@ -36,7 +36,7 @@ public class Gold extends GameItem {
 		increaseScore();
 	}
 
-	// increase the gold score2
+	// increase the gold score
 	
 	public int increaseScore() {
 		goldScore = goldScore + 1;

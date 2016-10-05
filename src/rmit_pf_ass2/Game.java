@@ -302,7 +302,7 @@ public class Game {
 
 		return endGame;
 
-	}
+	} // end getMyGround method
 
 	// check what items are near the player's position
 	private void senseNearby() {

@@ -17,7 +17,7 @@ import java.util.Random;
 public abstract class GameItem {
 
 	// abstract method for getting the position of any of the elements
-	// shall be used in the elements classes
+	// shall be used in the elements classes 
 	public int[][] display(int times) {
 
 		// setting the size of array on size specified from calling the method
