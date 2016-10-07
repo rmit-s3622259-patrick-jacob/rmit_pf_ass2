@@ -57,14 +57,15 @@ public class Game {
 	private int menu() { 
 
 		System.out.println();
-		int move;
-		Scanner input = new Scanner(System.in);
-
+		int move = 0;
 		boolean validInput = false;
 
 		do { // do while loop until there is a valid input
+			try {
+			Scanner input = new Scanner(System.in);
 
 			// Prompt for player to enter in their choice of move
+			System.out.println();
 			System.out.println("=====Wumpus====");
 			System.out.println("1. Move player left");
 			System.out.println("2. Move player right");
@@ -76,16 +77,33 @@ public class Game {
 				validInput = true;
 			} 
 			else { // inform the user of wrong entry and to let player input another entry
-				System.out.println("Wrong entry: please enter a number between 1 or 5");
+				System.out.println("Wrong entry: please try again");
 				move = input.nextInt();
 				if (move < 1 && move > 5) {
 					validInput = false;
 				}
 			}
+			} catch (Exception e) {
+				System.out.println("Wrong entry: please try again");
+				validInput = false;
+			}
 
 		} while (!validInput);
-
-		System.out.println("Your entry: " + move);
+		
+		switch (move) {
+		case 1 : System.out.println ("Player moves left - (Entry: " + move +")");
+		break;
+		case 2 : System.out.println ("Player moves right - (Entry: " + move +")");
+		break;
+		case 3 : System.out.println ("Player moves up - (Entry: " + move +")");
+		break;	
+		case 4 : System.out.println ("Player moves down - (Entry: " + move +")");
+		break;
+		case 5 : System.out.println ("Player decides to quite - (Entry: " + move +")");
+		break;
+		default: System.out.println ("Wrong Entry");
+		}
+		
 		return move;
 	} // end menu method
 
@@ -126,7 +144,7 @@ public class Game {
 			}
 		}
 		if (move == 5) { // user quits
-			System.out.println("Game over");
+			System.out.println("Thank you for playing the Wumpus Game - Have a nice day");
 			endGame = true;
 		}
 
