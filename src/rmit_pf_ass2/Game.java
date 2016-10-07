@@ -75,13 +75,11 @@ public class Game {
 			move = input.nextInt();
 			if (move >= 1 && move <= 5) { // check that player has input a valid entry
 				validInput = true;
-			} 
+			}
 			else { // inform the user of wrong entry and to let player input another entry
-				System.out.println("Wrong entry: please try again");
-				move = input.nextInt();
-				if (move < 1 && move > 5) {
+					System.out.println("Wrong entry: please try again");
 					validInput = false;
-				}
+					continue;
 			}
 			} catch (Exception e) {
 				System.out.println("Wrong entry: please try again");
