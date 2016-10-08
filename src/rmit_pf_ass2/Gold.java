@@ -14,7 +14,7 @@ public class Gold extends GameItem {
 		/* using polymorphism and inheritance to define the position of Gold in
 		 * setBoard() */
 
-		int[][] posGold = super.display(1);	
+		int[][] posGold = super.display(1);	// get one array line (element) for one coordinate
 		return posGold;
 	}
 

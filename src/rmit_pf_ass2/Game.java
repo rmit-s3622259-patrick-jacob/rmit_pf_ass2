@@ -28,7 +28,7 @@ public class Game {
 	private Gold myGold; // gold object
 
 	public Game() {
-		board = new String[4][4];
+		board = new String[4][4]; // board is a 4x4 array of String variables
 		boolean endGame = false; // endGame initially set to game has not ended
 		futureMove = null; // player has not initially moved to another position
 		myGold = new Gold(); // create new Gold object
@@ -55,7 +55,7 @@ public class Game {
 	private int menu() {
 
 		System.out.println();
-		int move = 0;
+		int move = 0; // player move choice is initially set to 0
 		boolean validInput = false;
 
 		do { // do while loop until there is a valid input
@@ -86,20 +86,20 @@ public class Game {
 
 		} while (!validInput); //leave loop once entry is valid between 1 - 5
 
-		switch (move) { //Display for user of last move 
-		case 1:
+		switch (move) { //Display player's chosen move 
+		case 1: // Player moves left
 			System.out.println("Player moves left (Entry: " + move + ")");
 			break;
-		case 2:
+		case 2: // Player moves right
 			System.out.println("Player moves right (Entry: " + move + ")");
 			break;
-		case 3:
+		case 3: // Player moves up
 			System.out.println("Player moves up (Entry: " + move + ")");
 			break;
-		case 4:
+		case 4: // Player moves down
 			System.out.println("Player moves down (Entry: " + move + ")");
 			break;
-		case 5:
+		case 5: // Player quits
 			System.out.println("Player decided to quit (Entry: " + move + ")");
 			break;
 		default:
@@ -112,7 +112,7 @@ public class Game {
 	// move player's position on board
 	private boolean movePlayer() {
 		
-		String h = "|";
+		String h = "|";	// Characters for generating the "walls" for cave grid horizontally
 		
 		
 		board[ppr][ppc] = "." + h; // remove * from previous player's position,
@@ -129,8 +129,7 @@ public class Game {
 			}
 		}
 		if (move == 2) { // move player right
-			if (ppc == 0 || ppc == 1 || ppc == 2) { // player column = 0, 1, or
-													// 2
+			if (ppc == 0 || ppc == 1 || ppc == 2) { // player column = 0, 1, or 2
 				ppc = ppc + 1;
 			} else if (ppc == 3) { // player column = 3, move player position to
 									// other side of board
@@ -167,7 +166,7 @@ public class Game {
 		// * marks player's current position
 		board[ppr][ppc] = "*" + h;
 		
-		// check if there is any gold left
+		// check if there is any gold left on the board
 		if (endGame == false)
 			checkGoldLeft();
 				
@@ -210,8 +209,7 @@ public class Game {
 		} while (!board[pwh][pwv].equals("W|")); 
 
 		//random number between 1-3 of gold for the board that shall be generated
-		int ag = 0;
-		int i = 0;
+		int ag = 0; // amount of gold
 		Random amountGoldGenerator = new Random();
 		ag = amountGoldGenerator.nextInt(3) + 1; //3 + 1 to ensure that if 0 then at least 1 Gold 
 		
@@ -220,14 +218,14 @@ public class Game {
 									prematurely */
 		
 		//loop goes as many times as generated in ag and writes Gold into the board array
-		for (i = 0; i < ag; i++) { 
+		for (int i = 0; i < ag; i++) { 
 			do {/*Do while loop to ensure that if random generated position is already
 				occupied a new position is generated*/
 				Gold posGold = new Gold();
 				int[][] Gold = posGold.display(1); //instantiate a Gold position
 
-				pgh = Gold[0][0]; // setting horizontal positons into int pgh
-				pgv = Gold[1][0]; // setting vertical positons into int pgv
+				pgh = Gold[0][0]; // setting horizontal positions into int pgh
+				pgv = Gold[1][0]; // setting vertical positions into int pgv
 
 				if (board[pgh][pgv] == null) {
 					board[pgh][pgv] = "g" + h; /* writing Gold into positions
@@ -249,7 +247,7 @@ public class Game {
 		twice the same position of pit is generated and the loop ends 
 		prematurely */
 
-		for (i = 0; i < 3; i++) {
+		for (int i = 0; i < 3; i++) {
 			do { /*Do while to ensure that if random generated position is already
 				occupied a new position is generated*/
 				Pit posPit = new Pit();
@@ -286,7 +284,7 @@ public class Game {
 				
 		
 		//loop to set in the left over grid positions the "walls" _ or | of the cave
-		for (i = 0; i < board.length; i++) {
+		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board.length; j++) {
 				if (board[i][j] == null) {
 					board[i][j] = v + h;
@@ -324,9 +322,9 @@ public class Game {
 
 	// check what items are at position player will move to
 	private boolean getMyGround() {
-		boolean isGold = false;
-		boolean isPit = false;
-		boolean isWumpus = false;
+		boolean isGold = false;	// variable to check if there is gold at a position
+		boolean isPit = false; // variable to check if there is a pit at a position
+		boolean isWumpus = false; // // variable to check if there is a Wumpus at a position
 		
 		if (futureMove.equals("g|")) {// check if there is gold nearby
 			isGold = true;
@@ -354,8 +352,8 @@ public class Game {
 	private boolean checkGoldLeft(){ // check if there is any gold left on the board
 		int countGold = 0; // count how many gold are left
 		
-		for (int i = 0; i < 4; i++)
-			for (int j = 0; j < 4; j++) {
+		for (int i = 0; i < board.length; i++)
+			for (int j = 0; j < board.length; j++) {
 				if (board[i][j].equals("g|")) // if there is gold on the board countGold increases
 					countGold++;
 			}
@@ -380,8 +378,8 @@ public class Game {
 
 		if (ppr == 0) { // if player position row = 0
 			if (ppc == 0) // if player position column = 0
-				for (int i = 0; i < 2; i++)
-					for (int j = 0; j < 2; j++) {
+				for (int i = 0; i < 2; i++) // check rows around player's position
+					for (int j = 0; j < 2; j++) { // check columns around player's position
 						if (board[ppr + i][ppc + j].equals("g|")) // check if there is gold nearby
 							goldNearby = true;
 						if (board[ppr + i][ppc + j].equals("p|")) // check if there is a pit nearby
@@ -390,8 +388,8 @@ public class Game {
 							wumpusNearby = true;
 					}
 			if (ppc == 1 || ppc == 2) // if player position column = 1 or 2
-				for (int i = 0; i < 2; i++)
-					for (int j = -1; j < 2; j++) {
+				for (int i = 0; i < 2; i++) // check rows around player's position
+					for (int j = -1; j < 2; j++) { // check columns around player's position
 						if (board[ppr + i][ppc + j].equals("g|")) // check if there is gold nearby
 							goldNearby = true;
 						if (board[ppr + i][ppc + j].equals("p|")) // check if there is a pit nearby
@@ -400,8 +398,8 @@ public class Game {
 							wumpusNearby = true;
 					}
 			if (ppc == 3) // if player position column = 3
-				for (int i = 0; i < 2; i++)
-					for (int j = -1; j < 1; j++) {
+				for (int i = 0; i < 2; i++) // check rows around player's position
+					for (int j = -1; j < 1; j++) { // check columns around player's position
 						if (board[ppr + i][ppc + j].equals("g|")) // check if there is gold nearby
 							goldNearby = true;
 						if (board[ppr + i][ppc + j].equals("p|")) // check if there is a pit nearby
@@ -413,8 +411,8 @@ public class Game {
 
 		if (ppr == 1 || ppr == 2) { // if player position row = 1 or 2
 			if (ppc == 0) // if player position column = 0
-				for (int i = -1; i < 2; i++)
-					for (int j = 0; j < 2; j++) {
+				for (int i = -1; i < 2; i++) // check rows around player's position
+					for (int j = 0; j < 2; j++) { // check columns around player's position
 						if (board[ppr + i][ppc + j].equals("g|")) // check if there is gold nearby
 							goldNearby = true;
 						if (board[ppr + i][ppc + j].equals("p|")) // check if there is a pit nearby
@@ -423,8 +421,8 @@ public class Game {
 							wumpusNearby = true;
 					}
 			if (ppc == 1 || ppc == 2) // if player position column = 1 or 2
-				for (int i = -1; i < 2; i++)
-					for (int j = -1; j < 2; j++) {
+				for (int i = -1; i < 2; i++) // check rows around player's position
+					for (int j = -1; j < 2; j++) { // check columns around player's position
 						if (board[ppr + i][ppc + j].equals("g|")) // check if there is gold nearby
 							goldNearby = true;
 						if (board[ppr + i][ppc + j].equals("p|")) // check if there is a pit nearby
@@ -433,8 +431,8 @@ public class Game {
 							wumpusNearby = true;
 					}
 			if (ppc == 3) // if player position column = 3
-				for (int i = -1; i < 2; i++)
-					for (int j = -1; j < 1; j++) {
+				for (int i = -1; i < 2; i++) // check rows around player's position
+					for (int j = -1; j < 1; j++) { // check columns around player's position
 						if (board[ppr + i][ppc + j].equals("g|")) // check if there is gold nearby
 							goldNearby = true;
 						if (board[ppr + i][ppc + j].equals("p|")) // check if there is a pit nearby
@@ -446,8 +444,8 @@ public class Game {
 
 		if (ppr == 3) { // if player position row = 3
 			if (ppc == 0) // if player position column = 0
-				for (int i = -1; i < 1; i++)
-					for (int j = 0; j < 2; j++) {
+				for (int i = -1; i < 1; i++) // check rows around player's position
+					for (int j = 0; j < 2; j++) { // check columns around player's position
 						if (board[ppr + i][ppc + j].equals("g|")) // check if there is gold nearby
 							goldNearby = true;
 						if (board[ppr + i][ppc + j].equals("p|")) // check if there is a pit nearby
@@ -456,8 +454,8 @@ public class Game {
 							wumpusNearby = true;
 					}
 			if (ppc == 1 || ppc == 2) // if player position column = 1 or 2
-				for (int i = -1; i < 1; i++)
-					for (int j = -1; j < 2; j++) {
+				for (int i = -1; i < 1; i++) // check rows around player's position
+					for (int j = -1; j < 2; j++) { // check columns around player's position
 						if (board[ppr + i][ppc + j].equals("g|")) // check if there is gold nearby
 							goldNearby = true;
 						if (board[ppr + i][ppc + j].equals("p|")) // check if there is a pit nearby
@@ -466,8 +464,8 @@ public class Game {
 							wumpusNearby = true;
 					}
 			if (ppc == 3) // if player position column = 3
-				for (int i = -1; i < 1; i++)
-					for (int j = -1; j < 1; j++) {
+				for (int i = -1; i < 1; i++) // check rows around player's position
+					for (int j = -1; j < 1; j++) { // check columns around player's position
 						if (board[ppr + i][ppc + j].equals("g|")) // check if there is gold nearby
 							goldNearby = true;
 						if (board[ppr + i][ppc + j].equals("p|")) // check if there is a pit nearby
