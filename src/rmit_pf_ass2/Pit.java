@@ -6,7 +6,7 @@ public class Pit extends GameItem {
 
 		/*
 		 * using polymorphism and inheritance to define the Position of first
-		 * ClearGround in setBoard() 
+		 * ClearGround in setBoard()
 		 */
 		int[][] posPit = super.display(3);
 		return posPit;

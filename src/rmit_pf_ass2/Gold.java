@@ -5,7 +5,7 @@ import java.util.*;
 public class Gold extends GameItem {
 	
 	public int goldScore;
-	
+	 
 	public Gold() {
 		int goldScore = 0;	// initial goldscore is 0
 	}

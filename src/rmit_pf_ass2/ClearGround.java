@@ -9,4 +9,4 @@ public class ClearGround extends GameItem {
 		int[][] posClearGround = super.display(1);
 		return posClearGround;
 	}
-}
+} 
