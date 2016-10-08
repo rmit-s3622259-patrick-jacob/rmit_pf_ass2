@@ -26,7 +26,7 @@ public class Gold extends GameItem {
 		 * setBoard()
 		 */
 
-		int[][] posGold = super.display(2);
+		int[][] posGold = super.display(1);	
 		return posGold;
 	}
 

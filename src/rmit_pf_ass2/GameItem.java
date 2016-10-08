@@ -21,13 +21,14 @@ public abstract class GameItem {
 	public int[][] display(int times) {
 
 		// setting the size of array on size specified from calling the method
-		int[][] position = new int[times][1];
+		int[][] position = new int[2][times];
 		int i, j;
 
 		for (i = 0; i < position.length; i++) {
 			for (j = 0; j < position[i].length; j++) {
 				Random randomGenerator = new Random();
 				position[i][j] = randomGenerator.nextInt(4);
+		
 			}
 		}
 		// returning the array
