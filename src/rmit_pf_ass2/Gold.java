@@ -8,7 +8,7 @@ public class Gold extends GameItem {
 	 
 	public Gold() {
 		int goldScore = 0;	// initial goldscore is 0
-	}
+	} 
 
 	public int[][] goldPosition() {
 		/* using polymorphism and inheritance to define the position of Gold in

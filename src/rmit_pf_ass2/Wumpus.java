@@ -10,4 +10,4 @@ public class Wumpus extends GameItem {
 		int[][] posWumpus = super.display(2); // get two array lines for two coordinates
 		return posWumpus;
 	}
-}
+} 

@@ -18,7 +18,7 @@ package rmit_pf_ass2;
 import java.util.*;
 import java.util.Random;
 
-public class Game {
+public class Game { 
 
 	private String[][] board;
 	private int ppr; // position player row
