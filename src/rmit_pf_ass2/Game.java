@@ -113,9 +113,11 @@ public class Game {
 	private boolean movePlayer() {
 		
 		String h = "|";
+		
+		
 		board[ppr][ppc] = "." + h; // remove * from previous player's position,
 									// mark as clear ground
-
+		
 		int move = menu(); // get player's move choice
 
 		if (move == 1) { // move player left
@@ -191,13 +193,7 @@ public class Game {
 		int pgh = 0; // position Gold horizontal
 		int pgv = 0; // position Gold vertical
 		
-		// set initial player position in a random generated position
-		Random playerPositionGenerator = new Random();
-		ppr = playerPositionGenerator.nextInt(4);	// player position row is a random number between 0 and 3
-		ppc = playerPositionGenerator.nextInt(4);	// player position column is a random number between 0 and 3
-		if (board[ppr][ppc] == null){ // check if board position is already occupied
-			board[ppr][ppc] = "*" + h; // * marks initial player position
-		}
+		
 		
 		// get position of Wumpus through Wumpus class
 		do { /*Do while to ensure that if random generated position is already
@@ -304,6 +300,12 @@ public class Game {
 				}
 			}
 		}
+		
+		// set initial player position in a random generated position
+				
+		board[cgh][cgv] = board[ppr][ppc]; // place initial player position over a clearGround position
+		board[ppr][ppc] = "*" + h; // * marks initial player position
+				
 		return board;
 
 	} // end setBoard method
