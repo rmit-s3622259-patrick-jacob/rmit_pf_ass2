@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Random;
 
 public class Game {
-
+ 
 	private String[][] board;
 	private int ppr; // position player row
 	private int ppc; // position player column

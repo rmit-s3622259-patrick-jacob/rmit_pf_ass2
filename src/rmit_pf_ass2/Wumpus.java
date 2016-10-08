@@ -6,7 +6,7 @@ public class Wumpus extends GameItem {
 		/*
 		 * using polymorphism and inheritance to define the position of Wumpus
 		 * in setBoard()
-		 */
+ 		 */
 		int[][] posWumpus = super.display(2); // get two array lines for two coordinates
 		return posWumpus;
 	}

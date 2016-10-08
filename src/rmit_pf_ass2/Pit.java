@@ -4,7 +4,7 @@ public class Pit extends GameItem {
 
 	public int[][] pitPosition() {
 
-		/*
+		/* 
 		 * using polymorphism and inheritance to define the Position of first
 		 * ClearGround in setBoard()
 		 */

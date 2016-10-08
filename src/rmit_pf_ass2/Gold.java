@@ -3,7 +3,7 @@ package rmit_pf_ass2;
 import java.util.*;
 
 public class Gold extends GameItem {
-	
+	 
 	public int goldScore;
 	 
 	public Gold() {
