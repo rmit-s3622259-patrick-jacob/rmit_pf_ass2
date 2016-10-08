@@ -1,20 +1,25 @@
 package rmit_pf_ass2;
 
+/**@author Patrick Jacob, Sofia McKerrow & George Cassar
+ * 
+ */
 import java.util.*;
 
 public class Gold extends GameItem {
-	
+
 	public int goldScore;
-	 
+
 	public Gold() {
-		int goldScore = 0;	// initial goldscore is 0
+		int goldScore = 0; // initial goldscore is 0
 	}
 
 	public int[][] goldPosition() {
-		/* using polymorphism and inheritance to define the position of Gold in
-		 * setBoard() */
+		/**
+		 * using polymorphism and inheritance to define the position of Gold in
+		 * setBoard()
+		 */
 
-		int[][] posGold = super.display(1);	
+		int[][] posGold = super.display(1);
 		return posGold;
 	}
 
@@ -25,11 +30,11 @@ public class Gold extends GameItem {
 	}
 
 	// increase the gold score
-	
+
 	public int increaseScore() {
 		goldScore = goldScore + 1;
 		System.out.println("Player landed in gold. Score is " + goldScore);
-		
+
 		return goldScore;
 	}
 }
