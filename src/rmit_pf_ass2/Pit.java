@@ -4,10 +4,9 @@ public class Pit extends GameItem {
 
 	public int[][] pitPosition() {
 
-		/**
-		 * @author Patrick Jacob, Sofia McKerrow & George Cassar using
-		 *         polymorphism and inheritance to define the Position of first
-		 *         ClearGround in setBoard()
+		/*
+		 * using polymorphism and inheritance to define the Position of first
+		 * ClearGround in setBoard()
 		 */
 		int[][] posPit = super.display(3); // get three array lines (elements) for three coordinates
 		return posPit;

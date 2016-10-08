@@ -1,20 +1,5 @@
 package rmit_pf_ass2;
 
-/* From the assignment description:
- * You should write a Game class, which has a 2D array of size 4 x 4 of GameItem called 
- * board for implementing the Wumpus game described above.
- * Game should provide: 
- * • a private method setBoard(), which instantiates objects on the board
- * • a private method display() which will display the board.
- * • a private method senseNearby(), which displays text about what the
- * player can sense from the board elements immediately surrounding the player.
- * • a private method menu() which will provide a menu asking the user to
- * make a choice from the following and obtain the user input.
- * a public method runGame() that will display the board, print out what 
- * the player can sense, present the menu and process the user's decision 
- * according to the game play described above.
- * Game display() method is used to loop through GameItem array to display the board.
- */
 import java.util.*;
 import java.util.Random;
 
