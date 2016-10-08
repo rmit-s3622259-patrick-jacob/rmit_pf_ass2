@@ -9,4 +9,4 @@ public class ClearGround extends GameItem {
 		int[][] posClearGround = super.display(1);	// get one array line (element) for one coordinate
 		return posClearGround;
 	}
-}
+} 

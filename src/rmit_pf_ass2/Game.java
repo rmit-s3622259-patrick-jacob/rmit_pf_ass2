@@ -26,7 +26,7 @@ public class Game {
 	private boolean endGame; // variable to check if game has ended
 	private String futureMove; // position where player will move to
 	private Gold myGold; // gold object
-
+ 
 	public Game() {
 		board = new String[4][4]; // board is a 4x4 array of String variables
 		boolean endGame = false; // endGame initially set to game has not ended

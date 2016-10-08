@@ -22,6 +22,6 @@ public abstract class GameItem {
 		}
 		// returning the array position
 		return position;
-	} 
+	}
  
 }

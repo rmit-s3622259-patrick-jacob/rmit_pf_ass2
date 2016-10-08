@@ -11,3 +11,4 @@ public class Wumpus extends GameItem {
 		return posWumpus;
 	}
 } 
+ 
